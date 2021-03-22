@@ -10,10 +10,10 @@
         android:title="Nhập Xuất" />
     <item
         android:id="@+id/item_3"
-        android:icon="@drawable/best_seller"
+        android:icon="@drawable/diagram"
         android:title="Thống kê" />
     <item
         android:id="@+id/item_4"
-        android:icon="@drawable/diagram"
+        android:icon="@drawable/best_seller"
         android:title="Bán chạy" />
 </menu>
