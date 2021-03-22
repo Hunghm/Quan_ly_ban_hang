@@ -7,6 +7,7 @@ import android.os.Handler;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.quan_ly_ban_hang.R;
+import com.example.quan_ly_ban_hang.login.login;
 
 public class SplashScreem extends AppCompatActivity {
 
@@ -19,7 +20,7 @@ public class SplashScreem extends AppCompatActivity {
             @Override
             public void run() {
                 startActivity(new
-                        Intent(SplashScreem.this, MainActivity.class));
+                        Intent(SplashScreem.this, login.class));
                 finish();
             }
         }, 2000);
