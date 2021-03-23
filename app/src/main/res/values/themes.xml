@@ -18,4 +18,9 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+
+    <style name="dialog_detail_bill_nhap">
+        <item name="android:textSize">15sp</item>
+    </style>
+
 </resources>

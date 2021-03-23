@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/img_sua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_baseline_create_24" />
+
+    <ImageView
+        android:id="@+id/img_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/bill" />
+
+    <TextView
+        android:id="@+id/tv_ma_hd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_san_pham"
+        android:layout_marginTop="20dp"
+        android:text="MA HD: "
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_value_ma_hd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_ma_hd"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/tv_ma_hd"
+        android:text="hd03"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tv_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_ma_hd"
+        android:layout_marginTop="20dp"
+        android:text="Sản phẩm" />
+
+    <TextView
+        android:id="@+id/tv_value_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_ma_hd"
+        android:layout_alignTop="@+id/tv_san_pham"
+        android:text="Trà xanh 0 độ" />
+
+    <TextView
+        android:id="@+id/tv_ngay_nhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_san_pham"
+        android:text="Ngày nhập" />
+
+    <TextView
+        android:id="@+id/tv_value_ngay_nhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_ma_hd"
+        android:layout_alignTop="@+id/tv_ngay_nhap"
+        android:text="12/01/2021" />
+
+    <TextView
+        android:id="@+id/tv_so_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_ngay_nhap"
+        android:text="Số sản phẩm" />
+
+    <TextView
+        android:id="@+id/tv_value_so_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_ma_hd"
+        android:layout_alignTop="@+id/tv_so_san_pham"
+        android:text="50 thùng" />
+
+    <TextView
+        android:id="@+id/tv_don_gia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_so_san_pham"
+        android:text="Đơn giá" />
+
+    <TextView
+        android:id="@+id/tv_value_don_gia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_ma_hd"
+        android:layout_alignTop="@+id/tv_don_gia"
+        android:text="1.000.0000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_don_gia"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/tv_value_don_gia"
+        android:text="VND"
+        android:textStyle="bold" />
+
+</RelativeLayout>
