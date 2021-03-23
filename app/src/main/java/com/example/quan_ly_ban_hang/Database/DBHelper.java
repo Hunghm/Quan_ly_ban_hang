@@ -6,13 +6,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
-public class dbHelper extends SQLiteOpenHelper {
+public class DBHelper extends SQLiteOpenHelper {
 
     public static final String DataBaseName = "nhapXuatdb";
     public Context context;
     private static final int version = 1;
 
-    public dbHelper(@Nullable Context context) {
+    public DBHelper(@Nullable Context context) {
         super(context, DataBaseName, null, version);
     }
 
