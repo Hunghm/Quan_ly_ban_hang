@@ -1,6 +1,7 @@
 package com.example.quan_ly_ban_hang.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.quan_ly_ban_hang.Activity.AddSanPham;
 import com.example.quan_ly_ban_hang.Adapter.ExampleAdapter;
 import com.example.quan_ly_ban_hang.Model.ExampleItem;
 import com.example.quan_ly_ban_hang.R;
@@ -41,7 +43,7 @@ public class SanPhamFragment extends Fragment {
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "abcd", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(getContext(), AddSanPham.class));
             }
         });
 
