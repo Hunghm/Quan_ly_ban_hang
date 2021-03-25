@@ -13,7 +13,7 @@ import com.example.quan_ly_ban_hang.Fragment.XuatFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
-    private String listTab[]={"Xuất","nhập"};
+    private String listTab[]={"Nhập","Xuất"};
 
     public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
@@ -22,7 +22,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        Log.e("abcdef",String.valueOf(position));
+//        Log.e("abcdef",String.valueOf(position));
         switch (position){
             case 0:
                 return new NhapFragment();

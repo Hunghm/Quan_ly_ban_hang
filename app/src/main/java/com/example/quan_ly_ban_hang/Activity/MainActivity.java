@@ -15,6 +15,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.quan_ly_ban_hang.Adapter.ExampleAdapter;
 import com.example.quan_ly_ban_hang.Fragment.BanChayFragment;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.e("abcde","chay vao day");
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_naviation);
 
@@ -53,10 +55,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SanPhamFragment()).commit();
-//            navigationView.setCheckedItem(R.id.item_1);
-//        }
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SanPhamFragment()).commit();
+            navigationView.setCheckedItem(R.id.item_1);
+        }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -87,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         //        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
         //                new FragmentA()).commit();
-
     }
 
     @Override
@@ -126,6 +127,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         return true;
     }
+
+
 
 }
 
