@@ -20,11 +20,7 @@
             android:name=".Activity.MainActivity"
             android:theme="@style/Theme.Quan_ly_ban_hang.NoActionBar"
             android:launchMode="singleTop">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
 
@@ -33,7 +29,11 @@
         <activity
             android:name=".Activity.SplashScreem"
             android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
     </application>
