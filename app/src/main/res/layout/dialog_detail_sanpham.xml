@@ -1,0 +1,127 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/img_sua"
+        android:layout_width="39dp"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_baseline_create_24" />
+
+    <ImageView
+        android:id="@+id/img_san_pham"
+        android:layout_width="114dp"
+        android:layout_height="85dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/bill"
+        tools:srcCompat="@drawable/img_sanpham" />
+
+    <TextView
+        android:id="@+id/tv_ten_san_pham_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_san_pham"
+        android:layout_marginTop="20dp"
+        android:text="Tên SP"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_value_ten_sp_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_ten_san_pham_dialog"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/tv_ten_san_pham_dialog"
+        android:text="Trà xanh 0 độ"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tv_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_ten_san_pham_dialog"
+        android:layout_marginTop="20dp"
+        android:text="Mã Sản phẩm" />
+
+    <TextView
+        android:id="@+id/tv_value_ma_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_ten_sp_dialog"
+        android:layout_alignTop="@+id/tv_san_pham"
+        android:text="SP01" />
+
+    <TextView
+        android:id="@+id/tv_sl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_san_pham"
+        android:text="Số lượng" />
+
+    <TextView
+        android:id="@+id/tv_value_soluong_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_ten_sp_dialog"
+        android:layout_alignTop="@+id/tv_sl"
+        android:text="100" />
+
+    <TextView
+        android:id="@+id/tv_gia_nhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_sl"
+        android:text="Giá nhập" />
+
+    <TextView
+        android:id="@+id/tv_value_gia_nhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_ten_sp_dialog"
+        android:layout_alignTop="@+id/tv_gia_nhap"
+        android:text="900.000" />
+
+    <TextView
+        android:id="@+id/tv_don_gia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_gia_nhap"
+        android:text="Giá xuất" />
+
+    <TextView
+        android:id="@+id/tv_value_gia_xuat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_ten_sp_dialog"
+        android:layout_alignTop="@+id/tv_don_gia"
+        android:text="1.000.0000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_don_gia"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/tv_value_gia_xuat"
+        android:text="VND"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_don_gia"
+        android:layout_marginLeft="-15dp"
+        android:layout_marginTop="-19dp"
+        android:layout_toRightOf="@+id/tv_value_gia_xuat"
+        android:text="VND"
+        android:textStyle="bold" />
+
+</RelativeLayout>
