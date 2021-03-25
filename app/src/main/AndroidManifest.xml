@@ -25,11 +25,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name=".addUser.addUser"></activity>
+
         <activity
             android:name=".Activity.SplashScreem"
             android:theme="@style/Theme.AppCompat.NoActionBar">
 
         </activity>
+
     </application>
 
 </manifest>
