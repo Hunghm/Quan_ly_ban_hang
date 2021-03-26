@@ -56,10 +56,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SanPhamFragment()).commit();
-            bottomNavigationView.setSelectedItemId(R.id.item_1);
-        }
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SanPhamFragment()).commit();
+//            bottomNavigationView.setSelectedItemId(R.id.item_1);
+//        }
 
 
 
@@ -91,11 +91,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
         final Intent intent = getIntent();
         if (intent.hasExtra("SWITCH_TAB")) {
-            final Integer tab = intent.getExtras().getInt("SWITCH_TAB");
+            final Bundle bundle = intent.getBundleExtra("SWITCH_TAB");
+            Integer tab = bundle.getInt("SWITCH_TAB",R.id.item_1);
+
             if (tab == R.id.item_2) {
                 Log.e("abcde","chay vao intent");
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NhapXuatFragment()).commit();
+                Fragment fragment = new NhapXuatFragment();
+                fragment.setArguments(bundle);
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
                 bottomNavigationView.setSelectedItemId(R.id.item_2);
+                Integer tabViewPager = bundle.getInt("tab",R.id.item_1);
             }
         }
         //        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

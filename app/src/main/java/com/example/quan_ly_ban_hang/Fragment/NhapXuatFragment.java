@@ -1,5 +1,6 @@
 package com.example.quan_ly_ban_hang.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,8 +26,7 @@ public class NhapXuatFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.nhap_xuat_fragment,container,false);
-        Log.e("abcde","chay vao day");
-        Log.e("abcde","chay vao day 2");
+
         tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         viewPager = (ViewPager) view.findViewById(R.id.view_pager);
 
@@ -34,7 +34,17 @@ public class NhapXuatFragment extends Fragment {
                 FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.getTabAt(1).select();
+
+//        Bundle bundle = getArguments();
+//        Integer tabViewPager = 0;
+//        if (bundle != null){
+//            tabViewPager = bundle.getInt("tab");
+//        }
+//        Boolean truefalse = bundle == null;
+//        Log.e("abcde",String.valueOf(truefalse));
+//        Log.e("abcde",String.valueOf(tabViewPager));
+
         return view;
     }
+
 }

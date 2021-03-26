@@ -24,8 +24,9 @@ public class XuatActivity extends AppCompatActivity {
         final Bundle bundle = new Bundle();
         final Intent intent = new Intent(this, MainActivity.class);
 
+        bundle.putInt("tab",1);
         bundle.putInt("SWITCH_TAB", R.id.item_2); // Both constants are defined in your code
-        intent.putExtras(bundle);
+        intent.putExtra("SWITCH_TAB",bundle);
 
         return intent;
     }
