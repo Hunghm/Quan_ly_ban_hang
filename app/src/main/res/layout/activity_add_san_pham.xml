@@ -4,26 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="18dp"
-    tools:context=".Activity.NhapActivity">
+    android:padding="18dp">
 
     <TextView
-        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_light"
+        android:text="THÊM SẢN PHẨM "
         android:gravity="center"
-        android:text="HÓA ĐƠN NHẬP"
-        android:textColor="@color/black"
         android:textSize="30sp"
-        android:textStyle="bold" />
+        android:id="@+id/tv_title"
+        android:background="@android:color/holo_orange_light"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
 
     <ImageView
         android:id="@+id/img_san_pham"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_title"
         android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tv_title"
         android:layout_marginTop="20dp"
         android:src="@drawable/bill" />
 
@@ -36,18 +36,11 @@
         android:hint="nhập mã hóa đơn "
         android:inputType="text" />
 
-    <Spinner
-        android:id="@+id/spinner_san_pham"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ed_ma_hd"
-        android:layout_marginTop="30dp" />
-
     <EditText
         android:id="@+id/ed_so_san_pham"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner_san_pham"
+        android:layout_below="@+id/ed_ma_hd"
         android:layout_marginTop="30dp"
         android:hint="Số sản phẩm"
         android:inputType="text" />
@@ -60,13 +53,21 @@
         android:layout_marginTop="30dp"
         android:hint="Thành tiền" />
 
-    <Button
-        android:id="@+id/btn_add"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/ed_gia_xuat"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ed_thanh_tien"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:hint="Thành tiền" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_add"
+        android:text="ADD"
+        android:layout_below="@+id/ed_gia_xuat"
         android:layout_marginTop="80dp"
-        android:text="ADD" />
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

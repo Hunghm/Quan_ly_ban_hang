@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Quan_ly_ban_hang">
-        <activity android:name=".ChucNang.ThemSanPhamActivity"></activity>
-        <activity android:name=".ChucNang.SuaSanPhamActivity" />
-        <activity android:name=".Activity.XuatActivity" />
+        <activity android:name=".Activity.XuatActivity"></activity>
         <activity android:name=".Activity.NhapActivity" />
         <activity android:name=".login.login" />
         <activity

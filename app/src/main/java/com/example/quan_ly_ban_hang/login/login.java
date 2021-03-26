@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import com.example.quan_ly_ban_hang.Activity.MainActivity;
 import com.example.quan_ly_ban_hang.R;
+import com.example.quan_ly_ban_hang.addUser.addUser;
 
 public class login extends AppCompatActivity {
 
@@ -26,6 +27,13 @@ public class login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(login.this, MainActivity.class));
+            }
+        });
+        btnDangXuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(login.this, addUser.class);
+                startActivity(intent);
             }
         });
     }

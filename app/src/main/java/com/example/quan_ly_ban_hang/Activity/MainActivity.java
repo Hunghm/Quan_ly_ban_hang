@@ -1,8 +1,13 @@
 package com.example.quan_ly_ban_hang.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -11,25 +16,32 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
+import com.example.quan_ly_ban_hang.Adapter.ExampleAdapter;
 import com.example.quan_ly_ban_hang.Fragment.BanChayFragment;
 import com.example.quan_ly_ban_hang.Fragment.NhapFragment;
 import com.example.quan_ly_ban_hang.Fragment.NhapXuatFragment;
 import com.example.quan_ly_ban_hang.Fragment.SanPhamFragment;
 import com.example.quan_ly_ban_hang.Fragment.ThongKeFragment;
+import com.example.quan_ly_ban_hang.Model.ExampleItem;
 import com.example.quan_ly_ban_hang.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     BottomNavigationView bottomNavigationView;
     DrawerLayout drawer;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        Log.e("abcde","chay vao day");
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_naviation);
 
@@ -46,8 +58,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SanPhamFragment()).commit();
-            navigationView.setCheckedItem(R.id.item_1);
+            bottomNavigationView.setSelectedItemId(R.id.item_1);
         }
+
+
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -70,15 +84,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 if (selectedFragment != null) {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
+                            selectedFragment).addToBackStack("TAG").commit();
                 }
                 return true;
             }
         });
-
+        final Intent intent = getIntent();
+        if (intent.hasExtra("SWITCH_TAB")) {
+            final Integer tab = intent.getExtras().getInt("SWITCH_TAB");
+            if (tab == R.id.item_2) {
+                Log.e("abcde","chay vao intent");
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new NhapXuatFragment()).commit();
+                bottomNavigationView.setSelectedItemId(R.id.item_2);
+            }
+        }
         //        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
         //                new FragmentA()).commit();
-
     }
 
     @Override
@@ -106,5 +127,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.search_menu, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        return true;
+    }
+
+
 }
 
