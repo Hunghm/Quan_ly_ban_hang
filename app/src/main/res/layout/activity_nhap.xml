@@ -8,23 +8,22 @@
     tools:context=".Activity.NhapActivity">
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HÓA ĐƠN NHẬP"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:id="@+id/tv_title"
         android:background="@android:color/holo_orange_light"
+        android:gravity="center"
+        android:text="HÓA ĐƠN NHẬP"
         android:textColor="@color/black"
-        android:textStyle="bold"
-        />
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/img_san_pham"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/tv_title"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:src="@drawable/bill" />
 
@@ -62,12 +61,12 @@
         android:hint="Thành tiền" />
 
     <Button
+        android:id="@+id/btn_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btn_add"
-        android:text="ADD"
         android:layout_below="@+id/ed_thanh_tien"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:layout_centerHorizontal="true"/>
+        android:text="ADD" />
 
 </RelativeLayout>
