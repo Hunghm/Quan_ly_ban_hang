@@ -34,6 +34,7 @@ public class NhapXuatFragment extends Fragment {
                 FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+        tabLayout.getTabAt(1).select();
         return view;
     }
 }
