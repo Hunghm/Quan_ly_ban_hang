@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.example.quan_ly_ban_hang.R;
 
-public class AddSanPham extends AppCompatActivity {
+public class SuaSanPhamActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_san_pham);
+        setContentView(R.layout.activity_sua_san_pham);
     }
 }

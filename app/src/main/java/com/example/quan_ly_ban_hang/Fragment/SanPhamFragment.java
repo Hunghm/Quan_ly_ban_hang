@@ -11,8 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.quan_ly_ban_hang.ChucNang.SuaSanPhamActivity;
-import com.example.quan_ly_ban_hang.ChucNang.ThemSanPhamActivity;
+import com.example.quan_ly_ban_hang.Activity.ThemSanPhamActivity;
 import com.example.quan_ly_ban_hang.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
