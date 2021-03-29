@@ -12,15 +12,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quan_ly_ban_hang.Model.ExampleItem;
+import com.example.quan_ly_ban_hang.Model.SanPham;
 import com.example.quan_ly_ban_hang.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleViewHolder>
-        implements Filterable {
-    private ArrayList<ExampleItem> mExampleList;
-    private List<ExampleItem> exampleListFull;
+         {
+    private ArrayList<SanPham> mExampleList;
+    private List<SanPham> exampleListFull;
     private OnItemClickListener mListener;
 
     public interface OnItemClickListener {
@@ -31,9 +32,9 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         mListener = listener;
     }
 
-    public ExampleAdapter(ArrayList<ExampleItem> mExampleList) {
+    public ExampleAdapter(ArrayList<SanPham> mExampleList) {
         this.mExampleList = mExampleList;
-        exampleListFull = new ArrayList<>(mExampleList);
+        exampleListFull = new ArrayList<>();
     }
 
     public static class ExampleViewHolder extends RecyclerView.ViewHolder {
@@ -65,17 +66,17 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
     @NonNull
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item,parent, false);
         ExampleViewHolder evh = new ExampleViewHolder(v, mListener);
         return evh;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position) {
-        ExampleItem currentItem = mExampleList.get(position);
-        holder.mImageView.setImageResource(currentItem.getmImageResource());
-        holder.mTextView1.setText(currentItem.getmText1());
-        holder.mTextView2.setText(currentItem.getmText2());
+        SanPham currentItem = mExampleList.get(position);
+        holder.mImageView.setImageResource(currentItem.getAnh());
+        holder.mTextView1.setText(currentItem.getTenSanPham());
+        holder.mTextView2.setText(currentItem.getGhiChu());
     }
 
     @Override
@@ -83,40 +84,40 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         return mExampleList.size();
     }
 
-    @Override
-    public Filter getFilter() {
-        return examplerFilter;
-    }
+//    @Override
+//    public Filter getFilter() {
+//        return examplerFilter;
+//    }
+//
+//    private Filter examplerFilter = new Filter() {
+//        @Override
+//        protected FilterResults performFiltering(CharSequence constraint) {
+//            List<ExampleItem> filteredList = new ArrayList<>();
+//
+//            if (constraint == null || constraint.length() == 0) {
+//                filteredList.addAll(exampleListFull);
+//            } else {
+//                String filterPattern = constraint.toString().toLowerCase().trim();
+//
+//                for (ExampleItem item :exampleListFull) {
+//                    if (item.getmText1().toLowerCase().contains(filterPattern)) {
+//                        filteredList.add(item);
+//                    }
+//                }
+//            }
+//
+//            FilterResults results = new FilterResults();
+//            results.values = filteredList;
+//
+//            return results;
+//        }
 
-    private Filter examplerFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence constraint) {
-            List<ExampleItem> filteredList = new ArrayList<>();
-
-            if (constraint == null || constraint.length() == 0) {
-                filteredList.addAll(exampleListFull);
-            } else {
-                String filterPattern = constraint.toString().toLowerCase().trim();
-
-                for (ExampleItem item :exampleListFull) {
-                    if (item.getmText1().toLowerCase().contains(filterPattern)) {
-                        filteredList.add(item);
-                    }
-                }
-            }
-
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
-
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence constraint, FilterResults results) {
-            mExampleList.clear();
-            mExampleList.addAll((List) results.values);
-            notifyDataSetChanged();
-        }
-    };
+//        @Override
+//        protected void publishResults(CharSequence constraint, FilterResults results) {
+//            mExampleList.clear();
+//            mExampleList.addAll((List) results.values);
+//            notifyDataSetChanged();
+//        }
+//    };
 
 }
