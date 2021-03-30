@@ -19,13 +19,13 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTableHoaDon = "create table HoaDon(" +
-                "maHoaDon TEXT PRIMARY KEY, " +
+                "maHoaDon INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "ngayNhapXuat DATE NOT NULL," +
                 "loaiHoaDon INTEGER NOT NULL)";
         db.execSQL(createTableHoaDon);
 
         String createTableHoaDonChiTiet = "create table HoaDonChiTiet(" +
-                "maHoaDonChiTiet TEXT PRIMARY KEY, " +
+                "maHoaDonChiTiet INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "maSanPham TEXT NOT NULL," +
                 "maHoaDon TEXT PRIMARY KEY, " +
                 "thanhTien Double NOT NULL," +
@@ -34,7 +34,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(createTableHoaDonChiTiet);
 
         String createTableSanPham = "create table SanPham(" +
-                "maSanPham TEXT PRIMARY KEY, " +
+                "maSanPham INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "tenSanPham TEXT NOT NULL," +
                 "giaNhap DOUBLE PRIMARY KEY, " +
                 "giaXuat DOUBLE NOT NULL," +

@@ -6,15 +6,13 @@ public class HoaDonChiTiet {
     private String MaHoaDonChiTiet;
     private String MaSanPham;
     private String MaHoaDon;
-    private Double ThanhTien;
     private int SoLuong;
     private Date HanLuuTru;
 
-    public HoaDonChiTiet(String maHoaDonChiTiet, String maSanPham, String maHoaDon, Double thanhTien, int soLuong, Date hanLuuTru) {
+    public HoaDonChiTiet(String maHoaDonChiTiet, String maSanPham, String maHoaDon, int soLuong, Date hanLuuTru) {
         MaHoaDonChiTiet = maHoaDonChiTiet;
         MaSanPham = maSanPham;
         MaHoaDon = maHoaDon;
-        ThanhTien = thanhTien;
         SoLuong = soLuong;
         HanLuuTru = hanLuuTru;
     }
@@ -44,14 +42,6 @@ public class HoaDonChiTiet {
 
     public void setMaHoaDon(String maHoaDon) {
         MaHoaDon = maHoaDon;
-    }
-
-    public Double getThanhTien() {
-        return ThanhTien;
-    }
-
-    public void setThanhTien(Double thanhTien) {
-        ThanhTien = thanhTien;
     }
 
     public int getSoLuong() {

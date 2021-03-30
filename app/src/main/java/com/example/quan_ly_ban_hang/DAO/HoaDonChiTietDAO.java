@@ -27,10 +27,9 @@ public class HoaDonChiTietDAO {
 
     public long insert(HoaDonChiTiet obj) {
         ContentValues values = new ContentValues();
-        values.put(Name.maHoaDonChiTiet, obj.getMaHoaDonChiTiet());
+//        values.put(Name.maHoaDonChiTiet, obj.getMaHoaDonChiTiet());
         values.put(Name.maSanPham, obj.getMaSanPham());
         values.put(Name.maHoaDon, obj.getMaHoaDon());
-        values.put(Name.thanhTien, obj.getThanhTien());
         values.put(Name.soLuong, obj.getSoLuong());
         values.put(Name.hanLuuTru, sdf.format(obj.getHanLuuTru()));
         return db.insert("HoaDonChiTiet", null, values);
@@ -41,7 +40,6 @@ public class HoaDonChiTietDAO {
         values.put(Name.maHoaDonChiTiet, obj.getMaHoaDonChiTiet());
         values.put(Name.maSanPham, obj.getMaSanPham());
         values.put(Name.maHoaDon, obj.getMaHoaDon());
-        values.put(Name.thanhTien, obj.getThanhTien());
         values.put(Name.soLuong, obj.getSoLuong());
         values.put(Name.hanLuuTru, sdf.format(obj.getHanLuuTru()));
         return db.update("HoaDonChiTiet", values, "maHoaDonChiTiet=?", new String[]{String.valueOf(obj.getMaHoaDonChiTiet())});
@@ -70,7 +68,6 @@ public class HoaDonChiTietDAO {
             obj.setMaHoaDonChiTiet(c.getString(c.getColumnIndex(Name.maHoaDonChiTiet)));
             obj.setMaSanPham(c.getString(c.getColumnIndex(Name.maSanPham)));
             obj.setMaHoaDon(c.getString(c.getColumnIndex(Name.maHoaDon)));
-            obj.setThanhTien(c.getDouble(c.getColumnIndex(Name.thanhTien)));
             obj.setSoLuong(c.getInt(c.getColumnIndex(Name.soLuong)));
             obj.setHanLuuTru((Date) sdf.parse(c.getString(c.getColumnIndex(Name.hanLuuTru))));
             list.add(obj);
