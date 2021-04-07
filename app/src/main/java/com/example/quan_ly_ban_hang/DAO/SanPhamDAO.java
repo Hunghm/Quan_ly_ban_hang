@@ -26,7 +26,7 @@ public class SanPhamDAO {
 
     public long insert(SanPham obj) {
         ContentValues values = new ContentValues();
-        values.put(Name.maSanPham, obj.getMaSanPham());
+//        values.put(Name.maSanPham, obj.getMaSanPham());
         values.put(Name.tenSanPham, obj.getTenSanPham());
         values.put(Name.giaNhap, obj.getGiaNhap());
         values.put(Name.giaXuat, obj.getGiaXuat());
