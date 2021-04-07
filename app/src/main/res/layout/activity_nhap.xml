@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ed_so_san_pham"
         android:layout_marginTop="30dp"
-        android:hint="Thành tiền" />
+        android:hint="Hạn lưu trữ" />
 
     <Button
         android:id="@+id/btn_add"

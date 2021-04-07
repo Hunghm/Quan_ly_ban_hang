@@ -26,21 +26,35 @@ public class DBHelper extends SQLiteOpenHelper {
 
         String createTableHoaDonChiTiet = "create table HoaDonChiTiet(" +
                 "maHoaDonChiTiet INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "maSanPham TEXT NOT NULL," +
-                "maHoaDon TEXT PRIMARY KEY, " +
-                "thanhTien Double NOT NULL," +
+                "maSanPham INTEGER NOT NULL REFERENCES SanPham(maSanPham)," +
+                "maHoaDon INTEGER NOT NULL REFERENCES HoaDon(maHoaDon), " +
                 "soLuong INTEGER NOT NULL," +
                 "hanLuuTru DATE NOT NULL)";
         db.execSQL(createTableHoaDonChiTiet);
 
         String createTableSanPham = "create table SanPham(" +
                 "maSanPham INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "maLoaiSanPham INTEGER NOT NULL REFERENCES LoaiSanPham(maLoaiSanPham)," +
                 "tenSanPham TEXT NOT NULL," +
-                "giaNhap DOUBLE PRIMARY KEY, " +
+                "soLuong INTEGER NOT NULL, " +
+                "giaNhap DOUBLE NOT NULL, " +
                 "giaXuat DOUBLE NOT NULL," +
-                "ghiChu TEXT PRIMARY KEY, " +
+                "ghiChu TEXT, " +
                 "anh INTEGER NOT NULL)";
         db.execSQL(createTableSanPham);
+
+        String createTableUser = "create table User(" +
+                "User TEXT NOT NULL PRIMARY KEY , " +
+                "password TEXT NOT NULL," +
+                "hoTen TEXT NOT NULL," +
+                "loai INTEGER) ";
+        db.execSQL(createTableUser);
+
+        String createTableLoaiSanPham = "create table LoaiSanPham(" +
+                "maLoaiSanPham INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "tenLoai TEXT NOT NULL)";
+        db.execSQL(createTableLoaiSanPham);
+
     }
 
     @Override

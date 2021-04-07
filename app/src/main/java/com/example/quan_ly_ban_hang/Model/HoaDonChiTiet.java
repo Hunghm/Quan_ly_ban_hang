@@ -1,6 +1,6 @@
 package com.example.quan_ly_ban_hang.Model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class HoaDonChiTiet {
     private String MaHoaDonChiTiet;

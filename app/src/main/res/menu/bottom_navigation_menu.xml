@@ -2,18 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/item_1"
-        android:icon="@drawable/categori"
+        android:icon="@drawable/img_sanpham"
         android:title="Sản phẩm" />
     <item
         android:id="@+id/item_2"
+        android:icon="@drawable/categori"
+        android:title="Loại SP" />
+    <item
+        android:id="@+id/item_3"
         android:icon="@drawable/bill"
         android:title="Nhập Xuất" />
     <item
-        android:id="@+id/item_3"
+        android:id="@+id/item_4"
         android:icon="@drawable/diagram"
         android:title="Thống kê" />
     <item
-        android:id="@+id/item_4"
+        android:id="@+id/item_5"
         android:icon="@drawable/best_seller"
         android:title="Bán chạy" />
 </menu>

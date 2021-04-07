@@ -14,7 +14,9 @@
             android:parentActivityName=".Activity.MainActivity" />
         <activity
             android:name=".Activity.NhapActivity"
-            android:parentActivityName=".Activity.MainActivity" />
+            android:parentActivityName=".Activity.MainActivity" >
+
+        </activity>
         <activity android:name=".login.login" />
         <activity
             android:name=".Activity.SuaSanPhamActivity"

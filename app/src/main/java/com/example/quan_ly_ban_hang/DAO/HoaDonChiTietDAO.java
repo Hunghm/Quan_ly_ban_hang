@@ -9,16 +9,16 @@ import com.example.quan_ly_ban_hang.Database.DBHelper;
 import com.example.quan_ly_ban_hang.Model.HoaDon;
 import com.example.quan_ly_ban_hang.Model.HoaDonChiTiet;
 
-import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HoaDonChiTietDAO {
 
     private SQLiteDatabase db;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
     public HoaDonChiTietDAO(Context context) {
         DBHelper dbHelper = new DBHelper(context);
@@ -49,18 +49,18 @@ public class HoaDonChiTietDAO {
         return db.delete("HoaDonChiTiet", "maHoaDonChiTiet=?", new String[]{id});
     }
 
-    public List<HoaDonChiTiet> getAll() throws ParseException {
+    public List<HoaDonChiTiet> getAll()  {
         String sql = "SELECT * FROM HoaDonChiTiet";
         return getData(sql);
     }
 
-    public HoaDonChiTiet getID(String id) throws ParseException {
+    public HoaDonChiTiet getID(String id) {
         String sql = "SELECT * FROM HoaDonChiTiet WHERE maHoaDonChiTiet=?";
         List<HoaDonChiTiet> list = getData(sql, id);
         return list.get(0);
     }
 
-    private List<HoaDonChiTiet> getData(String sql, String... selectionArgs) throws ParseException {
+    private List<HoaDonChiTiet> getData(String sql, String... selectionArgs) {
         List<HoaDonChiTiet> list = new ArrayList<>();
         Cursor c = db.rawQuery(sql, selectionArgs);
         while (c.moveToNext()) {
@@ -69,7 +69,11 @@ public class HoaDonChiTietDAO {
             obj.setMaSanPham(c.getString(c.getColumnIndex(Name.maSanPham)));
             obj.setMaHoaDon(c.getString(c.getColumnIndex(Name.maHoaDon)));
             obj.setSoLuong(c.getInt(c.getColumnIndex(Name.soLuong)));
-            obj.setHanLuuTru((Date) sdf.parse(c.getString(c.getColumnIndex(Name.hanLuuTru))));
+            try {
+                obj.setHanLuuTru((Date) sdf.parse(c.getString(c.getColumnIndex(Name.hanLuuTru))));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             list.add(obj);
         }
         return list;

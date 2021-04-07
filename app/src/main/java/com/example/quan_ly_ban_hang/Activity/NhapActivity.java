@@ -4,17 +4,22 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
+import com.example.quan_ly_ban_hang.Adapter.adapter_spinner_san_pham;
 import com.example.quan_ly_ban_hang.DAO.HoaDonChiTietDAO;
 import com.example.quan_ly_ban_hang.Model.HoaDonChiTiet;
 import com.example.quan_ly_ban_hang.Model.SanPham;
 import com.example.quan_ly_ban_hang.R;
 
+import java.sql.Date;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +29,8 @@ public class NhapActivity extends AppCompatActivity {
     private EditText edMaSanPham,edSoSanPham,edThanhTien;
     private Spinner spinnerSanPham;
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
+    private HoaDonChiTietDAO dao;
+    private adapter_spinner_san_pham adapter_spinner ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +43,27 @@ public class NhapActivity extends AppCompatActivity {
         edThanhTien = (EditText) findViewById(R.id.ed_thanh_tien);
         spinnerSanPham = (Spinner) findViewById(R.id.spinner_san_pham);
 
-        HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-//        hoaDonChiTiet.setMaSanPham(listSanPham.get(0).getMaSanPham());
-//        hoaDonChiTiet.setThanhTien();
-//        hoaDonChiTiet.setSoLuong();
-//        hoaDonChiTiet.setHanLuuTru();
-//        HoaDonChiTietDAO dao = new HoaDonChiTietDAO(this);
+        listSanPham.add(new SanPham("abc","abc",5.0,5.0,"abc", R.drawable.book));
+
+        adapter_spinner = new adapter_spinner_san_pham(this, listSanPham);
+        spinnerSanPham.setAdapter(adapter_spinner);
+
+        dao = new HoaDonChiTietDAO(this);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+                hoaDonChiTiet.setHanLuuTru(Calendar.getInstance().getTime());
+                hoaDonChiTiet.setMaSanPham(edMaSanPham.getText().toString());
+                hoaDonChiTiet.setMaHoaDon("3");
+                hoaDonChiTiet.setSoLuong(10);
+
+                long sanPhams =  dao.insert(hoaDonChiTiet);
+
+//                List<HoaDonChiTiet> sanPhams = dao.getAll();
+                Toast.makeText(NhapActivity.this, String.valueOf(sanPhams), Toast.LENGTH_SHORT).show();
+//                finish();
             }
         });
 

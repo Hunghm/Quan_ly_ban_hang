@@ -16,7 +16,7 @@ import java.util.List;
 public class HoaDonDAO {
 
     private SQLiteDatabase db;
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
     public HoaDonDAO(Context context) {
         DBHelper dbHelper = new DBHelper(context);

@@ -20,6 +20,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.quan_ly_ban_hang.Adapter.ExampleAdapter;
 import com.example.quan_ly_ban_hang.Fragment.BanChayFragment;
+import com.example.quan_ly_ban_hang.Fragment.Loai_SP_Fragment;
 import com.example.quan_ly_ban_hang.Fragment.NhapFragment;
 import com.example.quan_ly_ban_hang.Fragment.NhapXuatFragment;
 import com.example.quan_ly_ban_hang.Fragment.SanPhamFragment;
@@ -72,13 +73,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         selectedFragment = new SanPhamFragment();
                         break;
                     case R.id.item_2:
-//                        Log.e("abcdef","chay vao day");
-                        selectedFragment = new NhapXuatFragment();
+                        selectedFragment = new Loai_SP_Fragment();
                         break;
                     case R.id.item_3:
-                        selectedFragment = new ThongKeFragment();
+                        selectedFragment = new NhapXuatFragment();
                         break;
                     case R.id.item_4:
+                        selectedFragment = new ThongKeFragment();
+                        break;
+                    case R.id.item_5:
                         selectedFragment = new BanChayFragment();
                         break;
                 }
