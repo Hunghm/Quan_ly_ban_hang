@@ -52,6 +52,7 @@
 
     <EditText
         android:id="@+id/ed_gia_xuat_add"
+        android:saveEnabled="true"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="68dp"

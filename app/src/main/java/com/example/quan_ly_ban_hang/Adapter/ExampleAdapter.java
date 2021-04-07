@@ -66,7 +66,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
     @NonNull
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item,parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_item_nhap,parent, false);
         ExampleViewHolder evh = new ExampleViewHolder(v, mListener);
         return evh;
     }
