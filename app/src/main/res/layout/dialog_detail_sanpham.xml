@@ -102,12 +102,30 @@
         android:text="Giá xuất:" />
 
     <TextView
+        android:id="@+id/tv_don_gia2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_don_gia"
+        android:layout_marginTop="10dp"
+        android:text="Ghi chú:" />
+
+    <TextView
         android:id="@+id/tv_value_gia_xuat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tv_value_ten_sp_dialog"
         android:layout_alignTop="@+id/tv_don_gia"
         android:text="1.000.0000" />
+
+    <TextView
+        android:id="@+id/tv_ghichu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_ten_sp_dialog"
+        android:layout_alignTop="@+id/tv_don_gia"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="29dp"
+        android:text="..." />
 
     <TextView
         android:layout_width="wrap_content"
