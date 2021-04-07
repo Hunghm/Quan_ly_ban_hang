@@ -61,7 +61,7 @@ public class SanPhamFragment extends Fragment {
                 LayoutInflater inflater = getLayoutInflater();
                 View layout = inflater.inflate(R.layout.activity_them_san_pham,null);
                 EditText edNhap = (EditText) layout.findViewById(R.id.ed_ma_hd);
-                Button btn_them = (Button) layout.findViewById(R.id.btn_add);
+                Button btn_them = (Button) layout.findViewById(R.id.button);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setView(layout);
                 AlertDialog alertDialog = builder.create();

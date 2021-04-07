@@ -7,17 +7,37 @@ public class SanPham {
     private Double GiaXuat;
     private String GhiChu;
     private int Anh;
+    private Integer SoLuong;
+    private Integer MaLoaiSanPham;
 
-    public SanPham(String maSanPham, String tenSanPham, Double giaNhap, Double giaXuat, String ghiChu, int anh) {
+    public SanPham(String maSanPham, String tenSanPham, Double giaNhap, Double giaXuat, String ghiChu, int anh, Integer soLuong, Integer maLoaiSanPham) {
         MaSanPham = maSanPham;
         TenSanPham = tenSanPham;
         GiaNhap = giaNhap;
         GiaXuat = giaXuat;
         GhiChu = ghiChu;
         Anh = anh;
+        SoLuong = soLuong;
+        MaLoaiSanPham = maLoaiSanPham;
     }
 
     public SanPham() {
+    }
+
+    public Integer getSoLuong() {
+        return SoLuong;
+    }
+
+    public void setSoLuong(Integer soLuong) {
+        SoLuong = soLuong;
+    }
+
+    public Integer getMaLoaiSanPham() {
+        return MaLoaiSanPham;
+    }
+
+    public void setMaLoaiSanPham(Integer maLoaiSanPham) {
+        MaLoaiSanPham = maLoaiSanPham;
     }
 
     public String getMaSanPham() {

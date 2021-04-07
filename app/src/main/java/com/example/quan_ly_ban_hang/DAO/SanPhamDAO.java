@@ -32,6 +32,8 @@ public class SanPhamDAO {
         values.put(Name.giaXuat, obj.getGiaXuat());
         values.put(Name.ghiChu, obj.getGhiChu());
         values.put(Name.anh, obj.getAnh());
+        values.put(Name.soLuong, obj.getSoLuong());
+        values.put(Name.maLoaiSanPham, obj.getMaLoaiSanPham());
         return db.insert("SanPham", null, values);
     }
 
@@ -43,6 +45,8 @@ public class SanPhamDAO {
         values.put(Name.giaXuat, obj.getGiaXuat());
         values.put(Name.ghiChu, obj.getGhiChu());
         values.put(Name.anh, obj.getAnh());
+        values.put(Name.soLuong, obj.getSoLuong());
+        values.put(Name.maLoaiSanPham, obj.getMaLoaiSanPham());
         return db.update("SanPham", values, "maSanPham=?", new String[]{String.valueOf(obj.getMaSanPham())});
     }
 
@@ -72,6 +76,8 @@ public class SanPhamDAO {
             obj.setGiaXuat(c.getDouble(c.getColumnIndex(Name.giaXuat)));
             obj.setGhiChu(c.getString(c.getColumnIndex(Name.ghiChu)));
             obj.setAnh(c.getInt(c.getColumnIndex(Name.anh)));
+            obj.setSoLuong(c.getInt(c.getColumnIndex(Name.soLuong)));
+            obj.setMaLoaiSanPham(c.getInt(c.getColumnIndex(Name.maLoaiSanPham)));
             list.add(obj);
         }
         return list;
@@ -84,6 +90,8 @@ public class SanPhamDAO {
         public static String giaXuat = "giaXuat";
         public static String ghiChu = "ghiChu";
         public static String anh = "anh";
+        public static String soLuong = "soLuong";
+        public static String maLoaiSanPham = "maLoaiSanPham";
     }
 
 }
