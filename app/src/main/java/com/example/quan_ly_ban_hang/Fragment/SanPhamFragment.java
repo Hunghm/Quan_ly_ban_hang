@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.quan_ly_ban_hang.Activity.MainActivity;
 import com.example.quan_ly_ban_hang.Activity.ThemSanPhamActivity;
 import com.example.quan_ly_ban_hang.Adapter.ExampleAdapter;
+import com.example.quan_ly_ban_hang.DAO.SanPhamDAO;
 import com.example.quan_ly_ban_hang.Model.SanPham;
 import com.example.quan_ly_ban_hang.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,6 +31,7 @@ public class SanPhamFragment extends Fragment {
     RecyclerView recySanPham;
     FloatingActionButton btnadd;
     List listSanPham = new ArrayList();
+    SanPhamDAO sanPhamDAO;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -77,5 +79,6 @@ public class SanPhamFragment extends Fragment {
     }
 
     private void them() {
+
     }
 }
