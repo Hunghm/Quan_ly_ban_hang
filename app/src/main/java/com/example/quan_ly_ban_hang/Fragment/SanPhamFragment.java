@@ -1,10 +1,13 @@
 package com.example.quan_ly_ban_hang.Fragment;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -50,10 +53,29 @@ public class SanPhamFragment extends Fragment {
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ThemSanPhamActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(), ThemSanPhamActivity.class);
+//                startActivity(intent);
+
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.activity_them_san_pham,null);
+                EditText edNhap = (EditText) layout.findViewById(R.id.ed_ma_hd);
+                Button btn_them = (Button) layout.findViewById(R.id.btn_add);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setView(layout);
+                AlertDialog alertDialog = builder.create();
+                btn_them.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        them();
+                    }
+                });
+                alertDialog.show();
+                
             }
         });
         return view;
+    }
+
+    private void them() {
     }
 }
