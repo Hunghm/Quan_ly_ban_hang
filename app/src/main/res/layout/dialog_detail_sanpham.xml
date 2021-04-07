@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_ten_san_pham_dialog"
         android:layout_marginTop="20dp"
-        android:text="Mã Sản phẩm" />
+        android:text="Mã Sản phẩm:" />
 
     <TextView
         android:id="@+id/tv_value_ma_san_pham"
@@ -63,8 +63,9 @@
         android:id="@+id/tv_sl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_san_pham"
-        android:text="Số lượng" />
+        android:layout_below="@+id/textView10"
+        android:layout_marginTop="10dp"
+        android:text="Số lượng:" />
 
     <TextView
         android:id="@+id/tv_value_soluong_dialog"
@@ -72,6 +73,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tv_value_ten_sp_dialog"
         android:layout_alignTop="@+id/tv_sl"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="0dp"
         android:text="100" />
 
     <TextView
@@ -79,7 +82,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_sl"
-        android:text="Giá nhập" />
+        android:layout_marginTop="10dp"
+        android:text="Giá nhập:" />
 
     <TextView
         android:id="@+id/tv_value_gia_nhap"
@@ -94,7 +98,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_gia_nhap"
-        android:text="Giá xuất" />
+        android:layout_marginTop="10dp"
+        android:text="Giá xuất:" />
 
     <TextView
         android:id="@+id/tv_value_gia_xuat"
@@ -109,6 +114,7 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tv_don_gia"
         android:layout_marginLeft="5dp"
+        android:layout_marginTop="0dp"
         android:layout_toRightOf="@+id/tv_value_gia_xuat"
         android:text="VND"
         android:textStyle="bold" />
@@ -118,10 +124,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/tv_don_gia"
-        android:layout_marginLeft="-15dp"
-        android:layout_marginTop="-19dp"
+        android:layout_marginLeft="-13dp"
+        android:layout_marginTop="-30dp"
         android:layout_toRightOf="@+id/tv_value_gia_xuat"
         android:text="VND"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_san_pham"
+        android:layout_marginTop="10dp"
+        android:text="Lọai sản phẩm:" />
+
+    <TextView
+        android:id="@+id/tv_loai_sanpham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_value_ma_san_pham"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/textView10"
+        android:text="Nước giải khát" />
 
 </RelativeLayout>
