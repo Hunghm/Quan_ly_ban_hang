@@ -3,6 +3,7 @@ package com.example.quan_ly_ban_hang.Fragment;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -64,7 +65,7 @@ public class SanPhamFragment extends Fragment {
             public void onClick(View v) {
 //                Intent intent = new Intent(getActivity(), ThemSanPhamActivity.class);
 //                startActivity(intent);
-
+                Log.e("abc","chay vao day");
                 LayoutInflater inflater = getLayoutInflater();
                 View layout = inflater.inflate(R.layout.activity_them_san_pham,null);
                 EditText edTenSP = (EditText) layout.findViewById(R.id.ed_ten_sp_add);
