@@ -87,4 +87,18 @@ public class SanPham {
     public void setAnh(int anh) {
         Anh = anh;
     }
+
+    @Override
+    public String toString() {
+        return "SanPham{" +
+                "MaSanPham=" + MaSanPham +
+                ", TenSanPham='" + TenSanPham + '\'' +
+                ", GiaNhap=" + GiaNhap +
+                ", GiaXuat=" + GiaXuat +
+                ", GhiChu='" + GhiChu + '\'' +
+                ", Anh=" + Anh +
+                ", SoLuong=" + SoLuong +
+                ", MaLoaiSanPham=" + MaLoaiSanPham +
+                '}';
+    }
 }

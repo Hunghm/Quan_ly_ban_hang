@@ -10,7 +10,9 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -39,7 +41,7 @@ public class SanPhamFragment extends Fragment {
 
     RecyclerView recySanPham;
     FloatingActionButton btnadd;
-    List listSanPham = new ArrayList();
+    List<SanPham> listSanPham = new ArrayList();
     SanPhamDAO sanPhamDAO;
     LoaiSanPhamDAO loaiSanPhamDAO;
     LoaiSanPham loaiSanPham;
@@ -59,13 +61,48 @@ public class SanPhamFragment extends Fragment {
         AdapterSanPhamRecyclerView adapterSanPhamRecy = new AdapterSanPhamRecyclerView(getContext(), listSanPham);
         recySanPham.setAdapter(adapterSanPhamRecy);
 
+        adapterSanPhamRecy.onClickItemListener(new AdapterSanPhamRecyclerView.onClickListener() {
+            @Override
+            public void onClick(int possion) {
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.dialog_detail_sanpham,null);
+                TextView tvTenSanPham = (TextView) layout.findViewById(R.id.tv_value_ten_sp_dialog);
+                TextView tvMaSanPham = (TextView) layout.findViewById(R.id.tv_value_ma_san_pham);
+                TextView tvLoaiSanPham = (TextView) layout.findViewById(R.id.tv_loai_sanpham);
+                TextView tvSoLuong = (TextView) layout.findViewById(R.id.tv_value_soluong_dialog);
+                TextView tvGiaNhap = (TextView) layout.findViewById(R.id.tv_value_gia_nhap);
+                TextView tvGiaXuat = (TextView) layout.findViewById(R.id.tv_value_gia_xuat);
+                TextView tvGhiChu = (TextView) layout.findViewById(R.id.tv_ghichu);
+                ImageView imgSua = (ImageView) layout.findViewById(R.id.img_sua);
+
+                SanPham sanPham = listSanPham.get(possion);
+                tvTenSanPham.setText(sanPham.getTenSanPham());
+                tvMaSanPham.setText(String.valueOf(sanPham.getMaSanPham()));
+                LoaiSanPham loaiSanPham = loaiSanPhamDAO.getID(String.valueOf(sanPham.getMaLoaiSanPham()));
+                tvLoaiSanPham.setText(loaiSanPham.getTenLoai());
+                tvSoLuong.setText(String.valueOf(sanPham.getSoLuong()));
+                tvGiaNhap.setText(String.valueOf(sanPham.getGiaNhap()));
+                tvGiaXuat.setText(String.valueOf(sanPham.getGiaXuat()));
+                tvGhiChu.setText(sanPham.getGhiChu());
+                imgSua.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                    }
+                });
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setView(layout);
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
 
         btnadd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Intent intent = new Intent(getActivity(), ThemSanPhamActivity.class);
 //                startActivity(intent);
-                Log.e("abc","chay vao day");
                 LayoutInflater inflater = getLayoutInflater();
                 View layout = inflater.inflate(R.layout.activity_them_san_pham,null);
                 EditText edTenSP = (EditText) layout.findViewById(R.id.ed_ten_sp_add);
@@ -105,6 +142,8 @@ public class SanPhamFragment extends Fragment {
                         sanPham.setAnh(R.drawable.san_pham_icon);
                         sanPham.setMaLoaiSanPham(loaiSanPham.getMaLoai());
                         long result = sanPhamDAO.insert(sanPham);
+                        reloadList();
+                        adapterSanPhamRecy.refresh((ArrayList) sanPhamDAO.getAll());
                         Toast.makeText(getContext(), String.valueOf(result), Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -115,7 +154,8 @@ public class SanPhamFragment extends Fragment {
         return view;
     }
 
-    private void them() {
-
+    public void reloadList(){
+        listSanPham.clear();
+        listSanPham.addAll( sanPhamDAO.getAll());
     }
 }

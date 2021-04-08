@@ -78,7 +78,7 @@ public class AdapterSanPhamRecyclerView extends RecyclerView.Adapter<AdapterSanP
 
         }
     }
-    public void refresh(ArrayList arrayList, int position){
+    public void refresh(ArrayList arrayList){
         list.clear();
         list.addAll(arrayList);
         if (arrayList != null){
