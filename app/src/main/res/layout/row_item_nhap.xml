@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/img_product"
-        android:layout_width="88dp"
-        android:layout_height="86dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
         android:src="@drawable/bill" />
@@ -20,49 +20,49 @@
         android:layout_height="wrap_content"
         android:layout_toLeftOf="@+id/imgClose"
         android:layout_toRightOf="@+id/img_product"
-        android:padding="10dp">
+        >
 
         <TextView
-            android:id="@+id/tv_date"
+            android:id="@+id/tv_ma_hdct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:text="Date: "
-            android:textStyle="bold" />
-
-        <TextView
-            android:id="@+id/tv_mahd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_date"
             android:padding="5dp"
             android:text="Ma HD: "
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_value_date"
+            android:id="@+id/tv_soluong"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv_mahd"
+            android:layout_below="@+id/tv_ma_hdct"
+            android:padding="5dp"
+            android:text="So luong: "
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_value_ma_hdct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_ma_hdct"
             android:layout_marginLeft="10dp"
             android:padding="5dp"
-            android:text="20/03/2021" />
+            android:text="hd33" />
 
         <TextView
             android:id="@+id/tv_value_mahd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_value_date"
-            android:layout_alignLeft="@+id/tv_value_date"
+            android:layout_below="@+id/tv_value_ma_hdct"
+            android:layout_alignLeft="@+id/tv_value_ma_hdct"
             android:padding="5dp"
-            android:text="hd33 " />
+            android:text="10 " />
 
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/imgClose"
-        android:layout_width="88dp"
-        android:layout_height="86dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
         android:src="@drawable/ic_close" />

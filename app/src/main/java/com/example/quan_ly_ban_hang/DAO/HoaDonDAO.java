@@ -16,7 +16,7 @@ import java.util.List;
 public class HoaDonDAO {
 
     private SQLiteDatabase db;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     public HoaDonDAO(Context context) {
         DBHelper dbHelper = new DBHelper(context);
@@ -43,24 +43,34 @@ public class HoaDonDAO {
         return db.delete("HoaDon", "maHoaDon=?", new String[]{id});
     }
 
-    public List<HoaDon> getAll() throws ParseException {
+    public List<HoaDon> getAll() {
         String sql = "SELECT * FROM HoaDon";
         return getData(sql);
     }
 
-    public HoaDon getID(String id) throws ParseException {
+    public HoaDon getID(String id) {
         String sql = "SELECT * FROM HoaDon WHERE maHoaDon=?";
         List<HoaDon> list = getData(sql, id);
         return list.get(0);
     }
 
-    private List<HoaDon> getData(String sql, String... selectionArgs) throws ParseException {
+    public HoaDon getHoaDonNew() {
+        String sql = "SELECT * FROM HoaDon ORDER by ngayNhapXuat DESC";
+        List<HoaDon> list = getData(sql);
+        return list.get(0);
+    }
+
+    private List<HoaDon> getData(String sql, String... selectionArgs) {
         List<HoaDon> list = new ArrayList<>();
         Cursor c = db.rawQuery(sql, selectionArgs);
         while (c.moveToNext()) {
             HoaDon obj = new HoaDon();
-            obj.setMaHoaDon(c.getString(c.getColumnIndex(Name.maHoaDon)));
-            obj.setNgayNhapXuat(sdf.parse(c.getString(c.getColumnIndex(Name.ngayNhapXuat))));
+            obj.setMaHoaDon(c.getInt(c.getColumnIndex(Name.maHoaDon)));
+            try {
+                obj.setNgayNhapXuat(sdf.parse(c.getString(c.getColumnIndex(Name.ngayNhapXuat))));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
             obj.setLoaiHoaDon(c.getInt(c.getColumnIndex(Name.loaiHoaDon)));
             list.add(obj);
         }

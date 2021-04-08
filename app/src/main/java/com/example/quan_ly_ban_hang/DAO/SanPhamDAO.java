@@ -17,7 +17,7 @@ import java.util.List;
 public class SanPhamDAO {
 
     private SQLiteDatabase db;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     public SanPhamDAO(Context context) {
         DBHelper dbHelper = new DBHelper(context);
@@ -54,23 +54,23 @@ public class SanPhamDAO {
         return db.delete("SanPham", "maSanPham=?", new String[]{id});
     }
 
-    public List<SanPham> getAll() throws ParseException {
+    public List<SanPham> getAll()  {
         String sql = "SELECT * FROM SanPham";
         return getData(sql);
     }
 
-    public SanPham getID(String id) throws ParseException {
+    public SanPham getID(String id)  {
         String sql = "SELECT * FROM SanPham WHERE maSanPham=?";
         List<SanPham> list = getData(sql, id);
         return list.get(0);
     }
 
-    private List<SanPham> getData(String sql, String... selectionArgs) throws ParseException {
+    private List<SanPham> getData(String sql, String... selectionArgs)  {
         List<SanPham> list = new ArrayList<>();
         Cursor c = db.rawQuery(sql, selectionArgs);
         while (c.moveToNext()) {
             SanPham obj = new SanPham();
-            obj.setMaSanPham(c.getString(c.getColumnIndex(Name.maSanPham)));
+            obj.setMaSanPham(c.getInt(c.getColumnIndex(Name.maSanPham)));
             obj.setTenSanPham(c.getString(c.getColumnIndex(Name.tenSanPham)));
             obj.setGiaNhap(c.getDouble(c.getColumnIndex(Name.giaNhap)));
             obj.setGiaXuat(c.getDouble(c.getColumnIndex(Name.giaXuat)));

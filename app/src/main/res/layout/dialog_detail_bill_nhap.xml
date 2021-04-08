@@ -5,14 +5,6 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/img_sua"
-        android:layout_width="39dp"
-        android:layout_height="45dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/ic_baseline_create_24" />
-
-    <ImageView
         android:id="@+id/img_san_pham"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_san_pham"
         android:layout_marginTop="20dp"
-        android:text="MaHd"
+        android:text="Ma HD"
         android:textColor="@color/black"
         android:textSize="30sp"
         android:textStyle="bold" />
@@ -89,28 +81,46 @@
         android:text="50 thùng" />
 
     <TextView
-        android:id="@+id/tv_don_gia"
+        android:id="@+id/tv_thanh_tien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv_so_san_pham"
         android:layout_marginTop="0dp"
-        android:text="Đơn giá" />
+        android:text="Thành tiền" />
 
     <TextView
-        android:id="@+id/tv_value_don_gia"
+        android:id="@+id/tv_value_thanh_tien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tv_value_mahd"
-        android:layout_alignTop="@+id/tv_don_gia"
+        android:layout_alignTop="@+id/tv_thanh_tien"
         android:text="1.000.0000" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tv_don_gia"
+        android:layout_alignTop="@+id/tv_thanh_tien"
         android:layout_marginLeft="5dp"
-        android:layout_toRightOf="@+id/tv_value_don_gia"
+        android:layout_toRightOf="@+id/tv_value_thanh_tien"
         android:text="VND"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_han_luu_tru"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_thanh_tien"
+        android:layout_marginTop="0dp"
+        android:text="Hạn lưu trữ"
+        android:paddingBottom="50dp"/>
+
+    <TextView
+        android:id="@+id/tv_value_han_luu_tru"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_mahd"
+        android:layout_alignTop="@+id/tv_han_luu_tru"
+        android:text="22/02/2022"
+        />
 
 </RelativeLayout>

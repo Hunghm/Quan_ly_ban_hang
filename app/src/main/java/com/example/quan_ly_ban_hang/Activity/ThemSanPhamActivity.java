@@ -13,9 +13,9 @@ public class ThemSanPhamActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_san_pham);
-        edMaSPAdd = findViewById(R.id.ed_ma_san_pham_add);
-        edTenSpAdd = findViewById(R.id.ed_ten_san_pham_add);
-        edGiaNhapAdd = findViewById(R.id.ed_gia_nhap_add);
-        edGiaXuatAdd = findViewById(R.id.ed_gia_nhap_add);
+//        edMaSPAdd = findViewById(R.id.ed_ma_san_pham_add);
+//        edTenSpAdd = findViewById(R.id.ed_ten_san_pham_add);
+//        edGiaNhapAdd = findViewById(R.id.ed_gia_nhap_add);
+//        edGiaXuatAdd = findViewById(R.id.ed_gia_nhap_add);
     }
 }

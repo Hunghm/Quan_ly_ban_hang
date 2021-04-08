@@ -1,7 +1,7 @@
 package com.example.quan_ly_ban_hang.Model;
 
 public class SanPham {
-    private String MaSanPham;
+    private Integer MaSanPham;
     private String TenSanPham;
     private Double GiaNhap;
     private Double GiaXuat;
@@ -10,7 +10,7 @@ public class SanPham {
     private Integer SoLuong;
     private Integer MaLoaiSanPham;
 
-    public SanPham(String maSanPham, String tenSanPham, Double giaNhap, Double giaXuat, String ghiChu, int anh, Integer soLuong, Integer maLoaiSanPham) {
+    public SanPham(Integer maSanPham, String tenSanPham, Double giaNhap, Double giaXuat, String ghiChu, int anh, Integer soLuong, Integer maLoaiSanPham) {
         MaSanPham = maSanPham;
         TenSanPham = tenSanPham;
         GiaNhap = giaNhap;
@@ -40,11 +40,11 @@ public class SanPham {
         MaLoaiSanPham = maLoaiSanPham;
     }
 
-    public String getMaSanPham() {
+    public Integer getMaSanPham() {
         return MaSanPham;
     }
 
-    public void setMaSanPham(String maSanPham) {
+    public void setMaSanPham(Integer maSanPham) {
         MaSanPham = maSanPham;
     }
 

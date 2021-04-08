@@ -3,13 +3,13 @@ package com.example.quan_ly_ban_hang.Model;
 import java.util.Date;
 
 public class HoaDonChiTiet {
-    private String MaHoaDonChiTiet;
-    private String MaSanPham;
-    private String MaHoaDon;
+    private Integer MaHoaDonChiTiet;
+    private Integer MaSanPham;
+    private Integer MaHoaDon;
     private int SoLuong;
     private Date HanLuuTru;
 
-    public HoaDonChiTiet(String maHoaDonChiTiet, String maSanPham, String maHoaDon, int soLuong, Date hanLuuTru) {
+    public HoaDonChiTiet(Integer maHoaDonChiTiet, Integer maSanPham, Integer maHoaDon, int soLuong, Date hanLuuTru) {
         MaHoaDonChiTiet = maHoaDonChiTiet;
         MaSanPham = maSanPham;
         MaHoaDon = maHoaDon;
@@ -20,27 +20,27 @@ public class HoaDonChiTiet {
     public HoaDonChiTiet() {
     }
 
-    public String getMaHoaDonChiTiet() {
+    public Integer getMaHoaDonChiTiet() {
         return MaHoaDonChiTiet;
     }
 
-    public void setMaHoaDonChiTiet(String maHoaDonChiTiet) {
+    public void setMaHoaDonChiTiet(Integer maHoaDonChiTiet) {
         MaHoaDonChiTiet = maHoaDonChiTiet;
     }
 
-    public String getMaSanPham() {
+    public Integer getMaSanPham() {
         return MaSanPham;
     }
 
-    public void setMaSanPham(String maSanPham) {
+    public void setMaSanPham(Integer maSanPham) {
         MaSanPham = maSanPham;
     }
 
-    public String getMaHoaDon() {
+    public Integer getMaHoaDon() {
         return MaHoaDon;
     }
 
-    public void setMaHoaDon(String maHoaDon) {
+    public void setMaHoaDon(Integer maHoaDon) {
         MaHoaDon = maHoaDon;
     }
 

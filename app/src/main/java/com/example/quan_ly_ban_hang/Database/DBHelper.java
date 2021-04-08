@@ -36,7 +36,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "maSanPham INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "maLoaiSanPham INTEGER NOT NULL REFERENCES LoaiSanPham(maLoaiSanPham)," +
                 "tenSanPham TEXT NOT NULL," +
-                "soLuong INTEGER NOT NULL, " +
+                "soLuong INTEGER, " +
                 "giaNhap DOUBLE NOT NULL, " +
                 "giaXuat DOUBLE NOT NULL," +
                 "ghiChu TEXT, " +

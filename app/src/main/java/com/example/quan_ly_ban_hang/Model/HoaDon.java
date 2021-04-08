@@ -3,11 +3,11 @@ package com.example.quan_ly_ban_hang.Model;
 import java.util.Date;
 
 public class HoaDon {
-    private String MaHoaDon;
+    private Integer MaHoaDon;
     private Date NgayNhapXuat;
     private int LoaiHoaDon;
 
-    public HoaDon(String maHoaDon, Date ngayNhapXuat, int loaiHoaDon) {
+    public HoaDon(Integer maHoaDon, Date ngayNhapXuat, int loaiHoaDon) {
         MaHoaDon = maHoaDon;
         NgayNhapXuat = ngayNhapXuat;
         LoaiHoaDon = loaiHoaDon;
@@ -16,11 +16,11 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public String getMaHoaDon() {
+    public Integer getMaHoaDon() {
         return MaHoaDon;
     }
 
-    public void setMaHoaDon(String maHoaDon) {
+    public void setMaHoaDon(Integer maHoaDon) {
         MaHoaDon = maHoaDon;
     }
 

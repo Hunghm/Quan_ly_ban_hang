@@ -18,7 +18,7 @@ import java.util.List;
 public class HoaDonChiTietDAO {
 
     private SQLiteDatabase db;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     public HoaDonChiTietDAO(Context context) {
         DBHelper dbHelper = new DBHelper(context);
@@ -65,9 +65,9 @@ public class HoaDonChiTietDAO {
         Cursor c = db.rawQuery(sql, selectionArgs);
         while (c.moveToNext()) {
             HoaDonChiTiet obj = new HoaDonChiTiet();
-            obj.setMaHoaDonChiTiet(c.getString(c.getColumnIndex(Name.maHoaDonChiTiet)));
-            obj.setMaSanPham(c.getString(c.getColumnIndex(Name.maSanPham)));
-            obj.setMaHoaDon(c.getString(c.getColumnIndex(Name.maHoaDon)));
+            obj.setMaHoaDonChiTiet(c.getInt(c.getColumnIndex(Name.maHoaDonChiTiet)));
+            obj.setMaSanPham(c.getInt(c.getColumnIndex(Name.maSanPham)));
+            obj.setMaHoaDon(c.getInt(c.getColumnIndex(Name.maHoaDon)));
             obj.setSoLuong(c.getInt(c.getColumnIndex(Name.soLuong)));
             try {
                 obj.setHanLuuTru((Date) sdf.parse(c.getString(c.getColumnIndex(Name.hanLuuTru))));

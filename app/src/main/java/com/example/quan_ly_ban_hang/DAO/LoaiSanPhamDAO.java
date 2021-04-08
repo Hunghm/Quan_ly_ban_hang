@@ -18,7 +18,7 @@ import java.util.List;
 public class LoaiSanPhamDAO {
 
     private SQLiteDatabase db;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     public LoaiSanPhamDAO(Context context) {
         DBHelper dbHelper = new DBHelper(context);
