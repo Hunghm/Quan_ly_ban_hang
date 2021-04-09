@@ -186,12 +186,6 @@ public class NhapFragment extends Fragment {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setView(layout);
                 AlertDialog alertDialog = builder.create();
-//                btn_them.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        them();
-//                    }
-//                });
                 alertDialog.show();
             }
         });
@@ -204,7 +198,6 @@ public class NhapFragment extends Fragment {
     }
 
     public void them() {
-
         Toast.makeText(getContext(), "bam vao add", Toast.LENGTH_SHORT).show();
     }
 
