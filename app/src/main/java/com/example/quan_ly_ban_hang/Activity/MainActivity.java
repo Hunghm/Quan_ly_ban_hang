@@ -57,12 +57,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SanPhamFragment()).commit();
-//            bottomNavigationView.setSelectedItemId(R.id.item_1);
-//        }
-
-
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SanPhamFragment()).commit();
+            bottomNavigationView.setSelectedItemId(R.id.item_1);
+        }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -92,22 +90,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
             }
         });
-        final Intent intent = getIntent();
-        if (intent.hasExtra("SWITCH_TAB")) {
-            final Bundle bundle = intent.getBundleExtra("SWITCH_TAB");
-            Integer tab = bundle.getInt("SWITCH_TAB",R.id.item_1);
-
-            if (tab == R.id.item_2) {
-                Log.e("abcde","chay vao intent");
-                Fragment fragment = new NhapXuatFragment();
-                fragment.setArguments(bundle);
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
-                bottomNavigationView.setSelectedItemId(R.id.item_2);
-                Integer tabViewPager = bundle.getInt("tab",R.id.item_1);
-            }
-        }
-        //        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-        //                new FragmentA()).commit();
+//        final Intent intent = getIntent();
+//        if (intent.hasExtra("SWITCH_TAB")) {
+//            final Bundle bundle = intent.getBundleExtra("SWITCH_TAB");
+//            Integer tab = bundle.getInt("SWITCH_TAB",R.id.item_1);
+//
+//            if (tab == R.id.item_2) {
+//                Log.e("abcde","chay vao intent");
+//                Fragment fragment = new NhapXuatFragment();
+//                fragment.setArguments(bundle);
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, fragment).commit();
+//                bottomNavigationView.setSelectedItemId(R.id.item_2);
+//                Integer tabViewPager = bundle.getInt("tab",R.id.item_1);
+//            }
+//        }
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                        new FragmentA()).commit();
     }
 
     @Override
