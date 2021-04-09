@@ -1,6 +1,7 @@
 package com.example.quan_ly_ban_hang.Fragment;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quan_ly_ban_hang.Activity.MainActivity;
+import com.example.quan_ly_ban_hang.Activity.SuaSanPhamActivity;
 import com.example.quan_ly_ban_hang.Activity.ThemSanPhamActivity;
 import com.example.quan_ly_ban_hang.Adapter.AdapterSanPhamRecyclerView;
 import com.example.quan_ly_ban_hang.Adapter.AdapterSpinnerLoaiSP;
@@ -61,6 +63,35 @@ public class SanPhamFragment extends Fragment {
         AdapterSanPhamRecyclerView adapterSanPhamRecy = new AdapterSanPhamRecyclerView(getContext(), listSanPham);
         recySanPham.setAdapter(adapterSanPhamRecy);
 
+        adapterSanPhamRecy.onClickDeleteListener(new AdapterSanPhamRecyclerView.onClickListener() {
+            @Override
+            public void onClick(int possion) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Bạn có muốn xoá không ?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        int resultDel = sanPhamDAO.delete(String.valueOf(listSanPham.get(possion).getMaSanPham()));
+                        if (resultDel>0){
+                            reloadList();
+                            adapterSanPhamRecy.refresh((ArrayList) sanPhamDAO.getAll());
+                        }
+                        dialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton("Không đồng ý", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+
+            }
+        });
+
         adapterSanPhamRecy.onClickItemListener(new AdapterSanPhamRecyclerView.onClickListener() {
             @Override
             public void onClick(int possion) {
@@ -76,6 +107,7 @@ public class SanPhamFragment extends Fragment {
                 ImageView imgSua = (ImageView) layout.findViewById(R.id.img_sua);
 
                 SanPham sanPham = listSanPham.get(possion);
+
                 tvTenSanPham.setText(sanPham.getTenSanPham());
                 tvMaSanPham.setText(String.valueOf(sanPham.getMaSanPham()));
                 LoaiSanPham loaiSanPham = loaiSanPhamDAO.getID(String.valueOf(sanPham.getMaLoaiSanPham()));
@@ -87,7 +119,9 @@ public class SanPhamFragment extends Fragment {
                 imgSua.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        Intent intent = new Intent(getContext(), SuaSanPhamActivity.class);
+                        intent.putExtra("idsp", sanPham.getMaSanPham());
+                        startActivity(intent);
                     }
                 });
 

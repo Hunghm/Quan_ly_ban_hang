@@ -34,7 +34,6 @@ public class XuatFragment extends Fragment {
 //                startActivity(new Intent(getContext(), XuatActivity.class));
                 LayoutInflater inflater = getLayoutInflater();
                 View layout = inflater.inflate(R.layout.activity_xuat,null);
-                EditText edNhap = (EditText) layout.findViewById(R.id.ed_ma_hd);
                 Button btn_them = (Button) layout.findViewById(R.id.btn_add);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setView(layout);

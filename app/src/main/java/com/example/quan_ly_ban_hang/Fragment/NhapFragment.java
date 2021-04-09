@@ -1,11 +1,18 @@
 package com.example.quan_ly_ban_hang.Fragment;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.icu.util.Calendar;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quan_ly_ban_hang.Activity.NhapActivity;
 import com.example.quan_ly_ban_hang.Adapter.AdapterNhapRecyclerView;
+import com.example.quan_ly_ban_hang.Adapter.adapter_spinner_san_pham;
 import com.example.quan_ly_ban_hang.DAO.HoaDonChiTietDAO;
 import com.example.quan_ly_ban_hang.DAO.HoaDonDAO;
 import com.example.quan_ly_ban_hang.DAO.SanPhamDAO;
@@ -38,6 +46,8 @@ public class NhapFragment extends Fragment {
     AdapterNhapRecyclerView adapterNhapRecyclerView;
     HoaDonDAO hoaDonDAO;
     SanPhamDAO sanPhamDAO;
+    private SanPham sanPhamSelectedSpinner;
+    private ArrayList<SanPham> listSanPham;
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     @Nullable
@@ -73,10 +83,10 @@ public class NhapFragment extends Fragment {
                 HoaDonChiTiet hoaDonChiTiet = listHoaDonChiTiet.get(possion);
                 HoaDon hoaDon = hoaDonDAO.getID(String.valueOf(hoaDonChiTiet.getMaHoaDon()));
                 SanPham sanPham = sanPhamDAO.getID(String.valueOf(hoaDonChiTiet.getMaSanPham()));
-                tvMaHD.setText(hoaDon.getMaHoaDon());
+                tvMaHD.setText(String.valueOf(hoaDon.getMaHoaDon()));
                 tvTenSanPham.setText(sanPham.getTenSanPham());
                 tvNgayNhap.setText(sdf.format(hoaDon.getNgayNhapXuat()));
-                tvSoLuong.setText(hoaDonChiTiet.getSoLuong());
+                tvSoLuong.setText(String.valueOf(hoaDonChiTiet.getSoLuong()));
                 tvHanLuuTru.setText(sdf.format(hoaDonChiTiet.getHanLuuTru()));
                 Double thanhTien = hoaDonChiTiet.getSoLuong()*sanPham.getGiaNhap();
                 tvThanhTien.setText(String.valueOf(thanhTien));
@@ -89,28 +99,108 @@ public class NhapFragment extends Fragment {
             }
         });
 
+        adapterNhapRecyclerView.onClickDeleteListener(new AdapterNhapRecyclerView.onClickListener() {
+            @Override
+            public void onClick(int possion) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setMessage("Bạn có muốn xoá không ?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        int resultDel = donChiTietDAO.delete(String.valueOf(listHoaDonChiTiet.get(possion).getMaHoaDonChiTiet()));
+                        if (resultDel>0){
+                            reload();
+                            adapterNhapRecyclerView.refresh((ArrayList) donChiTietDAO.getAll());
+                        }
+                        dialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton("Không đồng ý", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
+            }
+        });
+
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(getContext(), "ABCD", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getContext(), NhapActivity.class));
-//                LayoutInflater inflater = getLayoutInflater();
-//                View layout = inflater.inflate(R.layout.activity_nhap,null);
-//                EditText edNhap = (EditText) layout.findViewById(R.id.ed_ma_hd);
-//                Button btn_them = (Button) layout.findViewById(R.id.btn_add);
-//                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//                builder.setView(layout);
-//                AlertDialog alertDialog = builder.create();
+//                startActivity(new Intent(getContext(), NhapActivity.class));
+                LayoutInflater inflater = getLayoutInflater();
+                View layout = inflater.inflate(R.layout.activity_nhap,null);
+                EditText edSoSanPham = (EditText) layout.findViewById(R.id.ed_so_san_pham);
+                EditText edHanLuuTru = (EditText) layout.findViewById(R.id.ed_han_luu_tru);
+                Spinner spinnerSanPham = (Spinner) layout.findViewById(R.id.spinner_san_pham);
+                Button btn_them = (Button) layout.findViewById(R.id.btn_add);
+
+                listSanPham = (ArrayList<SanPham>) sanPhamDAO.getAll();
+                Log.e("Listsanpham",String.valueOf(listSanPham.size()));
+                adapter_spinner_san_pham adapter_spinner = new adapter_spinner_san_pham(getContext(), listSanPham);
+                spinnerSanPham.setAdapter(adapter_spinner);
+                spinnerSanPham.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                    @Override
+                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                        sanPhamSelectedSpinner = (SanPham) parent.getItemAtPosition(position);
+                    }
+
+                    @Override
+                    public void onNothingSelected(AdapterView<?> parent) {
+
+                    }
+                });
+
+                btn_them.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        HoaDon hoaDon = new HoaDon();
+                        hoaDon.setLoaiHoaDon(1);
+                        hoaDon.setNgayNhapXuat(Calendar.getInstance().getTime());
+                        long resultHoaDon = hoaDonDAO.insert(hoaDon);
+                        HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
+
+                        Calendar c = Calendar.getInstance();
+                        c.setTime(Calendar.getInstance().getTime());
+                        c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
+                        HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+                        hoaDonChiTiet.setHanLuuTru(c.getTime());
+                        hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
+                        hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
+                        hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));
+
+                        long resultHoaDonChiTiet =  donChiTietDAO.insert(hoaDonChiTiet);
+                        if(resultHoaDonChiTiet > 0){
+                            adapterNhapRecyclerView.refresh((ArrayList) donChiTietDAO.getAll());
+                            reload();
+                        }
+                        Toast.makeText(getContext(), String.valueOf(resultHoaDonChiTiet), Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setView(layout);
+                AlertDialog alertDialog = builder.create();
 //                btn_them.setOnClickListener(new View.OnClickListener() {
 //                    @Override
 //                    public void onClick(View v) {
 //                        them();
 //                    }
 //                });
-//                alertDialog.show();
+                alertDialog.show();
             }
         });
         return view;
+    }
+
+    public void reload(){
+        listHoaDonChiTiet.clear();
+        listHoaDonChiTiet.addAll( donChiTietDAO.getAll());
     }
 
     public void them() {

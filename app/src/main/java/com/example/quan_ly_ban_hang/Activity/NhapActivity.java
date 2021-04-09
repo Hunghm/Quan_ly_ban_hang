@@ -43,7 +43,6 @@ public class NhapActivity extends AppCompatActivity {
         setContentView(R.layout.activity_nhap);
 
         btnAdd = (Button) findViewById(R.id.btn_add);
-        edMaSanPham = (EditText) findViewById(R.id.ed_ma_hd);
         edSoSanPham = (EditText) findViewById(R.id.ed_so_san_pham);
         edHanLuuTru = (EditText) findViewById(R.id.ed_han_luu_tru);
         spinnerSanPham = (Spinner) findViewById(R.id.spinner_san_pham);

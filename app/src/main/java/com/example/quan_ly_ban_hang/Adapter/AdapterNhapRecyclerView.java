@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -21,6 +22,7 @@ public class AdapterNhapRecyclerView extends RecyclerView.Adapter<AdapterNhapRec
     private Context context;
     private List<HoaDonChiTiet> list;
     private onClickListener listenner;
+    private onClickListener DeleteListenner;
 
     public AdapterNhapRecyclerView(Context context, List<HoaDonChiTiet> list) {
         this.context = context;
@@ -35,12 +37,15 @@ public class AdapterNhapRecyclerView extends RecyclerView.Adapter<AdapterNhapRec
     public void onClickItemListener(onClickListener listener){
         this.listenner= listener;
     }
+    public void onClickDeleteListener(onClickListener listener){
+        this.DeleteListenner= listener;
+    }
 
     @NonNull
     @Override
     public View_holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.row_item_nhap,null);
-        return new View_holder(view, listenner);
+        return new View_holder(view, listenner, DeleteListenner);
     }
 
     @Override
@@ -56,10 +61,12 @@ public class AdapterNhapRecyclerView extends RecyclerView.Adapter<AdapterNhapRec
 
     public static class View_holder extends RecyclerView.ViewHolder{
         TextView tvTitle,tvMiniNews;
-        public View_holder(@NonNull View itemView, onClickListener listener) {
+        ImageView imgClose;
+        public View_holder(@NonNull View itemView, onClickListener listener,onClickListener deleteListener)  {
             super(itemView);
             tvTitle = (TextView) itemView.findViewById(R.id.tv_value_ma_hdct);
             tvMiniNews = (TextView) itemView.findViewById(R.id.tv_value_mahd);
+            imgClose = (ImageView) itemView.findViewById(R.id.imgClose);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -70,10 +77,18 @@ public class AdapterNhapRecyclerView extends RecyclerView.Adapter<AdapterNhapRec
                 }
             });
 
+            imgClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(deleteListener != null){
+                        deleteListener.onClick(getAdapterPosition());
+                    }
+                }
+            });
 
         }
     }
-    public void refresh(ArrayList arrayList, int position){
+    public void refresh(ArrayList arrayList){
         list.clear();
         list.addAll(arrayList);
         if (arrayList != null){

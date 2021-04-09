@@ -23,25 +23,30 @@ public class AdapterSanPhamRecyclerView extends RecyclerView.Adapter<AdapterSanP
     private Context context;
     private List<SanPham> list;
     private onClickListener listenner;
+    private onClickListener deleteListenner;
 
     public AdapterSanPhamRecyclerView(Context context, List<SanPham> list) {
         this.context = context;
         this.list = list;
     }
 
-    public interface onClickListener{
+    public interface onClickListener {
         void onClick(int possion);
     }
 
-    public void onClickItemListener(onClickListener listener){
-        this.listenner= listener;
+    public void onClickItemListener(onClickListener listener) {
+        this.listenner = listener;
+    }
+
+    public void onClickDeleteListener(onClickListener listener) {
+        this.deleteListenner = listener;
     }
 
     @NonNull
     @Override
     public View_holder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.row_item_sanpham,null);
-        return new View_holder(view, listenner);
+        View view = LayoutInflater.from(context).inflate(R.layout.row_item_sanpham, null);
+        return new View_holder(view, listenner, deleteListenner);
     }
 
     @Override
@@ -56,10 +61,11 @@ public class AdapterSanPhamRecyclerView extends RecyclerView.Adapter<AdapterSanP
         return list.size();
     }
 
-    public static class View_holder extends RecyclerView.ViewHolder{
-        TextView tvTenSanPham,tvSoLuong;
+    public static class View_holder extends RecyclerView.ViewHolder {
+        TextView tvTenSanPham, tvSoLuong;
         ImageView imgClose, imgIcon;
-        public View_holder(@NonNull View itemView, onClickListener listener) {
+
+        public View_holder(@NonNull View itemView, onClickListener listener, onClickListener deleteListenner) {
             super(itemView);
             imgClose = (ImageView) itemView.findViewById(R.id.imgClose);
             imgIcon = (ImageView) itemView.findViewById(R.id.img_product);
@@ -69,19 +75,28 @@ public class AdapterSanPhamRecyclerView extends RecyclerView.Adapter<AdapterSanP
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (listener!=null) {
+                    if (listener != null) {
                         listener.onClick(getAdapterPosition());
                     }
                 }
             });
 
+            imgClose.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (listener != null) {
+                        deleteListenner.onClick(getAdapterPosition());
+                    }
+                }
+            });
 
         }
     }
-    public void refresh(ArrayList arrayList){
+
+    public void refresh(ArrayList arrayList) {
         list.clear();
         list.addAll(arrayList);
-        if (arrayList != null){
+        if (arrayList != null) {
             notifyDataSetChanged();
         }
     }
