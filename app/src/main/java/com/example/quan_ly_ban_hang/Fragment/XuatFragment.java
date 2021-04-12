@@ -25,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.quan_ly_ban_hang.Activity.NhapActivity;
 import com.example.quan_ly_ban_hang.Activity.XuatActivity;
 import com.example.quan_ly_ban_hang.Adapter.AdapterNhapRecyclerView;
+import com.example.quan_ly_ban_hang.Adapter.AdapterXuatRecyclerView;
 import com.example.quan_ly_ban_hang.Adapter.adapter_spinner_san_pham;
 import com.example.quan_ly_ban_hang.DAO.HoaDonChiTietDAO;
 import com.example.quan_ly_ban_hang.DAO.HoaDonDAO;
@@ -42,13 +43,14 @@ public class XuatFragment extends Fragment {
 
     FloatingActionButton btnAdd;
     RecyclerView recyclerView;
-    HoaDonChiTietDAO donChiTietDAO;
-    ArrayList<HoaDonChiTiet> listHoaDonChiTiet;
-    AdapterNhapRecyclerView adapterXuatRecyclerView;
+    AdapterXuatRecyclerView adapterXuatRecyclerView;
     HoaDonDAO hoaDonDAO;
     SanPhamDAO sanPhamDAO;
-    private SanPham sanPhamSelectedSpinner;
+    HoaDonChiTietDAO donChiTietDAO;
+    ArrayList<HoaDonChiTiet> listHoaDonChiTiet;
+    ArrayList<HoaDon> listHoaDon;
     private ArrayList<SanPham> listSanPham;
+    private SanPham sanPhamSelectedSpinner;
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     @Nullable
@@ -61,15 +63,15 @@ public class XuatFragment extends Fragment {
         hoaDonDAO = new HoaDonDAO(getContext());
         sanPhamDAO = new SanPhamDAO(getContext());
 
-        listHoaDonChiTiet = (ArrayList<HoaDonChiTiet>) donChiTietDAO.getAll();
+        listHoaDon = (ArrayList<HoaDon>) hoaDonDAO.layTheoLoai("2");
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
-        adapterXuatRecyclerView = new AdapterNhapRecyclerView(getContext(), listHoaDonChiTiet);
+        adapterXuatRecyclerView = new AdapterXuatRecyclerView(getContext(), listHoaDon);
         recyclerView.setAdapter(adapterXuatRecyclerView);
-        Toast.makeText(getContext(), String.valueOf(listHoaDonChiTiet.size()), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), String.valueOf(listHoaDon.size()), Toast.LENGTH_SHORT).show();
 
-        adapterXuatRecyclerView.onClickItemListener(new AdapterNhapRecyclerView.onClickListener() {
+        adapterXuatRecyclerView.onClickItemListener(new AdapterXuatRecyclerView.onClickListener() {
             @Override
             public void onClick(int possion) {
                 LayoutInflater inflater = getLayoutInflater();
@@ -81,8 +83,10 @@ public class XuatFragment extends Fragment {
                 TextView tvHanLuuTru = (TextView) layout.findViewById(R.id.tv_value_han_luu_tru);
                 TextView tvThanhTien = (TextView) layout.findViewById(R.id.tv_value_thanh_tien);
 
-                HoaDonChiTiet hoaDonChiTiet = listHoaDonChiTiet.get(possion);
-                HoaDon hoaDon = hoaDonDAO.getID(String.valueOf(hoaDonChiTiet.getMaHoaDon()));
+                HoaDon hoaDon =listHoaDon.get(possion);
+                HoaDonChiTiet hoaDonChiTiet = donChiTietDAO.getByIDHoaDon(String.valueOf(hoaDon.getMaHoaDon()));
+//                HoaDonChiTiet hoaDonChiTiet = listHoaDonChiTiet.get(possion);
+//                HoaDon hoaDon = hoaDonDAO.getID(String.valueOf(hoaDonChiTiet.getMaHoaDon()));
                 SanPham sanPham = sanPhamDAO.getID(String.valueOf(hoaDonChiTiet.getMaSanPham()));
                 tvMaHD.setText(String.valueOf(hoaDon.getMaHoaDon()));
                 tvTenSanPham.setText(sanPham.getTenSanPham());
@@ -100,7 +104,7 @@ public class XuatFragment extends Fragment {
             }
         });
 
-        adapterXuatRecyclerView.onClickDeleteListener(new AdapterNhapRecyclerView.onClickListener() {
+        adapterXuatRecyclerView.onClickDeleteListener(new AdapterXuatRecyclerView.onClickListener() {
             @Override
             public void onClick(int possion) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -109,10 +113,10 @@ public class XuatFragment extends Fragment {
                 builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        int resultDel = donChiTietDAO.delete(String.valueOf(listHoaDonChiTiet.get(possion).getMaHoaDonChiTiet()));
+                        int resultDel = hoaDonDAO.delete(String.valueOf(listHoaDon.get(possion).getMaHoaDon()));
                         if (resultDel>0){
                             reload();
-                            adapterXuatRecyclerView.refresh((ArrayList) donChiTietDAO.getAll());
+                            adapterXuatRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("2"));
                         }
                         dialog.dismiss();
                     }
@@ -180,7 +184,7 @@ public class XuatFragment extends Fragment {
 
                         long resultHoaDonChiTiet =  donChiTietDAO.insert(hoaDonChiTiet);
                         if(resultHoaDonChiTiet > 0){
-                            adapterXuatRecyclerView.refresh((ArrayList) donChiTietDAO.getAll());
+                            adapterXuatRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("2"));
                             reload();
                         }
                         alertDialog.dismiss();
@@ -198,8 +202,8 @@ public class XuatFragment extends Fragment {
     }
 
     public void reload(){
-        listHoaDonChiTiet.clear();
-        listHoaDonChiTiet.addAll( donChiTietDAO.getAll());
+        listHoaDon.clear();
+        listHoaDon.addAll( hoaDonDAO.layTheoLoai("2"));
     }
 
     private void them() {

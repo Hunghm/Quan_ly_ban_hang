@@ -41,13 +41,14 @@ public class NhapFragment extends Fragment {
 
     FloatingActionButton btnAdd;
     RecyclerView recyclerView;
-    HoaDonChiTietDAO donChiTietDAO;
-    ArrayList<HoaDonChiTiet> listHoaDonChiTiet;
     AdapterNhapRecyclerView adapterNhapRecyclerView;
+    HoaDonChiTietDAO donChiTietDAO;
     HoaDonDAO hoaDonDAO;
     SanPhamDAO sanPhamDAO;
-    private SanPham sanPhamSelectedSpinner;
+    ArrayList<HoaDonChiTiet> listHoaDonChiTiet;
+    ArrayList<HoaDon> listHoaDon;
     private ArrayList<SanPham> listSanPham;
+    private SanPham sanPhamSelectedSpinner;
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
     @Nullable
@@ -60,13 +61,14 @@ public class NhapFragment extends Fragment {
         hoaDonDAO = new HoaDonDAO(getContext());
         sanPhamDAO = new SanPhamDAO(getContext());
 
-        listHoaDonChiTiet = (ArrayList<HoaDonChiTiet>) donChiTietDAO.getAll();
+//        listHoaDonChiTiet = (ArrayList<HoaDonChiTiet>) donChiTietDAO.getAll();
+        listHoaDon = (ArrayList<HoaDon>) hoaDonDAO.layTheoLoai("1");
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
-        adapterNhapRecyclerView = new AdapterNhapRecyclerView(getContext(), listHoaDonChiTiet);
+        adapterNhapRecyclerView = new AdapterNhapRecyclerView(getContext(), listHoaDon);
         recyclerView.setAdapter(adapterNhapRecyclerView);
-        Toast.makeText(getContext(), String.valueOf(listHoaDonChiTiet.size()), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getContext(), String.valueOf(listHoaDon.size()), Toast.LENGTH_SHORT).show();
 
         adapterNhapRecyclerView.onClickItemListener(new AdapterNhapRecyclerView.onClickListener() {
             @Override
@@ -80,8 +82,8 @@ public class NhapFragment extends Fragment {
                 TextView tvHanLuuTru = (TextView) layout.findViewById(R.id.tv_value_han_luu_tru);
                 TextView tvThanhTien = (TextView) layout.findViewById(R.id.tv_value_thanh_tien);
 
-                HoaDonChiTiet hoaDonChiTiet = listHoaDonChiTiet.get(possion);
-                HoaDon hoaDon = hoaDonDAO.getID(String.valueOf(hoaDonChiTiet.getMaHoaDon()));
+                HoaDon hoaDon =listHoaDon.get(possion);
+                HoaDonChiTiet hoaDonChiTiet = donChiTietDAO.getByIDHoaDon(String.valueOf(hoaDon.getMaHoaDon()));
                 SanPham sanPham = sanPhamDAO.getID(String.valueOf(hoaDonChiTiet.getMaSanPham()));
                 tvMaHD.setText(String.valueOf(hoaDon.getMaHoaDon()));
                 tvTenSanPham.setText(sanPham.getTenSanPham());
@@ -108,10 +110,10 @@ public class NhapFragment extends Fragment {
                 builder.setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        int resultDel = donChiTietDAO.delete(String.valueOf(listHoaDonChiTiet.get(possion).getMaHoaDonChiTiet()));
+                        int resultDel = hoaDonDAO.delete(String.valueOf(listHoaDon.get(possion).getMaHoaDon()));
                         if (resultDel>0){
                             reload();
-                            adapterNhapRecyclerView.refresh((ArrayList) donChiTietDAO.getAll());
+                            adapterNhapRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("1"));
                         }
                         dialog.dismiss();
                     }
@@ -179,7 +181,7 @@ public class NhapFragment extends Fragment {
 
                         long resultHoaDonChiTiet =  donChiTietDAO.insert(hoaDonChiTiet);
                         if(resultHoaDonChiTiet > 0){
-                            adapterNhapRecyclerView.refresh((ArrayList) donChiTietDAO.getAll());
+                            adapterNhapRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("1"));
                             reload();
                         }
                         alertDialog.dismiss();
@@ -195,8 +197,8 @@ public class NhapFragment extends Fragment {
     }
 
     public void reload(){
-        listHoaDonChiTiet.clear();
-        listHoaDonChiTiet.addAll( donChiTietDAO.getAll());
+        listHoaDon.clear();
+        listHoaDon.addAll( hoaDonDAO.layTheoLoai("1"));
     }
 
     public void them() {

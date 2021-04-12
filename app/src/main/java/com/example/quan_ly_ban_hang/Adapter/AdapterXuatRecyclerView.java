@@ -1,7 +1,6 @@
 package com.example.quan_ly_ban_hang.Adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +11,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quan_ly_ban_hang.Model.HoaDon;
-import com.example.quan_ly_ban_hang.Model.HoaDonChiTiet;
 import com.example.quan_ly_ban_hang.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AdapterNhapRecyclerView extends RecyclerView.Adapter<AdapterNhapRecyclerView.View_holder> {
+public class AdapterXuatRecyclerView extends RecyclerView.Adapter<AdapterXuatRecyclerView.View_holder> {
 
     private Context context;
     private List<HoaDon> list;
@@ -27,7 +25,7 @@ public class AdapterNhapRecyclerView extends RecyclerView.Adapter<AdapterNhapRec
     private onClickListener DeleteListenner;
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
 
-    public AdapterNhapRecyclerView(Context context, List<HoaDon> list) {
+    public AdapterXuatRecyclerView(Context context, List<HoaDon> list) {
         this.context = context;
         this.list = list;
 //        Log.e("test","chay vao adapter");

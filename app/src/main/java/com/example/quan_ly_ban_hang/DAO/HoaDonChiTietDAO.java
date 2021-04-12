@@ -80,6 +80,12 @@ public class HoaDonChiTietDAO {
         return list;
     }
 
+    public HoaDonChiTiet getByIDHoaDon(String idHoaDon) {
+        String sql = "SELECT * FROM HoaDonChiTiet WHERE maHoaDon=?";
+        List<HoaDonChiTiet> list = getData(sql, idHoaDon);
+        return list.get(0);
+    }
+
     public List<Top> getTop(){
         String sqlTop = "SELECT maSanPham, sum(soLuong) as soLuong, count(maSanPham) as soHoaDon FROM HoaDonChiTiet GROUP BY maSanPham ORDER BY soLuong DESC LIMIT 10";
         List<Top> list = new ArrayList<>();

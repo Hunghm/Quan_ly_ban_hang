@@ -36,24 +36,24 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_ma_hdct"
             android:padding="5dp"
-            android:text="So luong: "
+            android:text="Ngay nhap: "
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_value_ma_hdct"
+            android:id="@+id/tv_value_ma_hd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/tv_ma_hdct"
             android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/tv_soluong"
             android:padding="5dp"
             android:text="hd33" />
 
         <TextView
-            android:id="@+id/tv_value_mahd"
+            android:id="@+id/tv_value_ngay_nhap"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_value_ma_hdct"
-            android:layout_alignLeft="@+id/tv_value_ma_hdct"
+            android:layout_below="@+id/tv_value_ma_hd"
+            android:layout_alignLeft="@+id/tv_value_ma_hd"
             android:padding="5dp"
             android:text="10 " />
 

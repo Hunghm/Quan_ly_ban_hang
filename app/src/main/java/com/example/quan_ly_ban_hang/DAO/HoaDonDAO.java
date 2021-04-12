@@ -77,6 +77,12 @@ public class HoaDonDAO {
         return list;
     }
 
+    public List<HoaDon> layTheoLoai(String loaiHD) {
+        String sql = "SELECT * FROM HoaDon WHERE loaiHoaDon=?";
+        List<HoaDon> list = getData(sql, loaiHD);
+        return list;
+    }
+
     public static class Name {
         public static String maHoaDon = "maHoaDon";
         public static String ngayNhapXuat = "ngayNhapXuat";
