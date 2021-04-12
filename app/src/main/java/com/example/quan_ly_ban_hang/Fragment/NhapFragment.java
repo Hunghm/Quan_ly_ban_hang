@@ -134,6 +134,10 @@ public class NhapFragment extends Fragment {
 //                startActivity(new Intent(getContext(), NhapActivity.class));
                 LayoutInflater inflater = getLayoutInflater();
                 View layout = inflater.inflate(R.layout.activity_nhap,null);
+                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                builder.setView(layout);
+                AlertDialog alertDialog = builder.create();
+
                 EditText edSoSanPham = (EditText) layout.findViewById(R.id.ed_so_san_pham);
                 EditText edHanLuuTru = (EditText) layout.findViewById(R.id.ed_han_luu_tru);
                 Spinner spinnerSanPham = (Spinner) layout.findViewById(R.id.spinner_san_pham);
@@ -178,14 +182,12 @@ public class NhapFragment extends Fragment {
                             adapterNhapRecyclerView.refresh((ArrayList) donChiTietDAO.getAll());
                             reload();
                         }
+                        alertDialog.dismiss();
                         Toast.makeText(getContext(), String.valueOf(resultHoaDonChiTiet), Toast.LENGTH_SHORT).show();
 
                     }
                 });
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                builder.setView(layout);
-                AlertDialog alertDialog = builder.create();
                 alertDialog.show();
             }
         });

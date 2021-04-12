@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.quan_ly_ban_hang.Database.DBHelper;
 import com.example.quan_ly_ban_hang.Model.HoaDon;
 import com.example.quan_ly_ban_hang.Model.HoaDonChiTiet;
+import com.example.quan_ly_ban_hang.Model.Top;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -74,6 +75,21 @@ public class HoaDonChiTietDAO {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
+            list.add(obj);
+        }
+        return list;
+    }
+
+    public List<Top> getTop(){
+        String sqlTop = "SELECT maSanPham, sum(soLuong) as soLuong, count(maSanPham) as soHoaDon FROM HoaDonChiTiet GROUP BY maSanPham ORDER BY soLuong DESC LIMIT 10";
+        List<Top> list = new ArrayList<>();
+        Cursor c = db.rawQuery(sqlTop,null);
+        while (c.moveToNext()) {
+            Top obj = new Top();
+            obj.setMaSanPham(c.getInt(c.getColumnIndex("maSanPham")));
+            obj.setSoHoaDon(c.getInt(c.getColumnIndex("soHoaDon")));
+            obj.setSoLuong(c.getInt(c.getColumnIndex("soLuong")));
+
             list.add(obj);
         }
         return list;

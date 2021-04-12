@@ -178,6 +178,7 @@ public class SanPhamFragment extends Fragment {
                         long result = sanPhamDAO.insert(sanPham);
                         reloadList();
                         adapterSanPhamRecy.refresh((ArrayList) sanPhamDAO.getAll());
+                        alertDialog.dismiss();
                         Toast.makeText(getContext(), String.valueOf(result), Toast.LENGTH_SHORT).show();
                     }
                 });
