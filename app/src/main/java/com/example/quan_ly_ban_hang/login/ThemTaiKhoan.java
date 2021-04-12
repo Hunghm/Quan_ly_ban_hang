@@ -57,13 +57,13 @@ public class ThemTaiKhoan extends AppCompatActivity {
                 if (validate(thuThu)){
                     long resultInsert = (int) thuThuDAO.insert(thuThu);
                     if (resultInsert >0 ){
-                        Toast.makeText(ThemTaiKhoan.this, "Thay đổi mật khẩu thành công ", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ThemTaiKhoan.this, "Thêm tài khoản thành công ", Toast.LENGTH_SHORT).show();
                         edNhapLai.setText("");
                         edHoTen.setText("");
                         edPass.setText("");
                         edUser.setText("");
                     }else {
-                        Toast.makeText(ThemTaiKhoan.this, "thay đổi mật khẩu thất bại", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ThemTaiKhoan.this, "Thêm tài khoản thất bại", Toast.LENGTH_SHORT).show();
                     }
                 }
 

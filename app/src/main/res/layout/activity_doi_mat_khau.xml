@@ -3,66 +3,103 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="24dp">
 
-  <TextView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:background="@android:color/holo_orange_light"
-      android:gravity="center"
-      android:text="Đổi mật khẩu "
-      android:textColor="@android:color/black"
-      android:textSize="30sp"
-      android:textStyle="bold" />
-
-  <EditText
-      android:id="@+id/ed_pass_cu"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="30dp"
-      android:hint="Mật khẩu cũ"
-      android:inputType="textPassword"
-      android:textSize="30sp" />
-
-  <EditText
-      android:id="@+id/ed_pass_moi"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="30dp"
-      android:hint="Mật khẩu mới"
-      android:inputType="textPassword"
-      android:textSize="30sp" />
-
-  <EditText
-      android:id="@+id/ed_pass_nhap_lai"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="30dp"
-      android:hint="Nhập lại mật khẩu"
-      android:inputType="textPassword"
-      android:textSize="30sp" />
-
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="50dp"
-      android:orientation="horizontal">
-
-    <Button
-        android:id="@+id/btn_luu"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingHorizontal="5dp"
-        android:text="Luu" />
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_huy"
-        android:layout_width="0dp"
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="114dp"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="casual"
+            android:text="WAREHOUSE" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:paddingHorizontal="5dp"
-        android:text="Huy" />
-  </LinearLayout>
+        android:layout_marginTop="25dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/ed_pass_cu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="casual"
+                android:hint="Mật khẩu cũ"
+                android:inputType="textPassword"
+                android:textSize="18dp" />
+        </com.google.android.material.textfield.TextInputLayout>
+    </LinearLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/ed_pass_moi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="casual"
+            android:hint="Mật khẩu mới"
+            android:inputType="textPassword"
+            android:textSize="18dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/ed_pass_nhap_lai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:hint="Nhập lại mật khẩu"
+            android:fontFamily="casual"
+            android:inputType="textPassword"
+            android:textSize="18dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_luu"
+            android:layout_width="150dp"
+            android:fontFamily="casual"
+            android:textColor="#fff"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="5dp"
+            android:text="Luu" />
+
+        <Button
+            android:id="@+id/btn_huy"
+            android:textColor="#fff"
+            android:fontFamily="casual"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="60dp"
+            android:text="Huy" />
+    </LinearLayout>
 
 </LinearLayout>

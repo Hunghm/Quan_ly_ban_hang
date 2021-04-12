@@ -20,11 +20,7 @@
             android:name=".Activity.NhapActivity"
             android:parentActivityName=".Activity.MainActivity"></activity>
         <activity android:name=".login.login">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Activity.SuaSanPhamActivity"
@@ -40,7 +36,13 @@
             android:theme="@style/Theme.Quan_ly_ban_hang.NoActionBar"></activity>
         <activity
             android:name=".Activity.SplashScreem"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
