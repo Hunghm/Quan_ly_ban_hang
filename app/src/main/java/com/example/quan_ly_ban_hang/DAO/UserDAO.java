@@ -71,6 +71,12 @@ public class UserDAO {
         return list;
     }
 
+    public List<User> checkTonTaiTK (String id){
+        String sql = "SELECT * FROM User WHERE User=?";
+        List<User> list = getData(sql, id);
+        return list;
+    }
+
     public static class Name {
         public static String user = "User";
         public static String password = "password";

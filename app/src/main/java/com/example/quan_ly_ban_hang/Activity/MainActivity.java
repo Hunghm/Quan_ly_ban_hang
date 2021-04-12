@@ -27,6 +27,10 @@ import com.example.quan_ly_ban_hang.Fragment.SanPhamFragment;
 import com.example.quan_ly_ban_hang.Fragment.ThongKeFragment;
 import com.example.quan_ly_ban_hang.Model.ExampleItem;
 import com.example.quan_ly_ban_hang.R;
+import com.example.quan_ly_ban_hang.login.DoiMatKhau;
+import com.example.quan_ly_ban_hang.login.ListUserActivity;
+import com.example.quan_ly_ban_hang.login.ThemTaiKhoan;
+import com.example.quan_ly_ban_hang.login.login;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
@@ -36,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     BottomNavigationView bottomNavigationView;
     DrawerLayout drawer;
-
+    String nguoiDung;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new SanPhamFragment()).commit();
             bottomNavigationView.setSelectedItemId(R.id.item_1);
         }
+
+        Intent intent =getIntent();
+        nguoiDung = intent.getStringExtra("user");
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -112,13 +119,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item_1:
-                //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentE()).commit();
+                startActivity(new Intent(this, ListUserActivity.class));
                 break;
             case R.id.item_2:
-                //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentF()).commit();
+                startActivity(new Intent(this, ThemTaiKhoan.class));
                 break;
             case R.id.item_3:
-                //                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new FragmentG()).commit();
+                Intent intent = new Intent(this, DoiMatKhau.class);
+                intent.putExtra("user",nguoiDung);
+                startActivity(intent);
+                break;
+            case R.id.item_4:
+                startActivity(new Intent(this, login.class));
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);

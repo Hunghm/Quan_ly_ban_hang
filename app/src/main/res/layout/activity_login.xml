@@ -5,96 +5,61 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="40dp"
+    android:padding="16px"
     tools:context=".login.login">
 
-    <ImageView
-        android:id="@+id/img_logo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/logo" />
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:fontFamily="casual"
-        android:text="HELLO, WElCOME BACK"
-        android:textColor="@color/black"
-        android:textSize="25dp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:text="Sign In to continue"
-        android:textSize="12dp" />
-
-    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="20dp"
-        android:orientation="vertical">
+        android:id="@+id/tv_title"
+        android:text="Login"
+        android:background="@android:color/holo_orange_light"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:gravity="center"
+        />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/addUserError"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Username"
-            app:startIconDrawable="@drawable/ic_baseline_account_circle_24">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ed_user_name"
+        android:hint="User Name"
+        android:inputType="text"
+        android:textSize="30sp"
+        android:layout_marginTop="30dp"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:id="@+id/ed_user_name"
-                android:layout_height="wrap_content">
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ed_password"
+        android:hint="User Name"
+        android:inputType="textPassword"
+        android:textSize="30sp"
+        android:layout_marginTop="30dp"/>
 
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/chk_remember_pass"
+        android:text="Remember me"
+        android:layout_marginTop="30dp"
+        />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/addPassError"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            app:passwordToggleEnabled="true"
-            app:startIconDrawable="@android:drawable/ic_secure">
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:id="@+id/btn_login"
+        android:layout_marginTop="50dp"
+        />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:id="@+id/ed_password"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword">
-
-            </com.google.android.material.textfield.TextInputEditText>
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <CheckBox
-            android:id="@+id/ckbPass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Remember me?" />
-
-        <Button
-            android:id="@+id/btn_dang_nhap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="#F07B52"
-            android:text="LOGIN"
-            android:textColor="#fff" />
-
-        <Button
-            android:id="@+id/btn_dang_xuat"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:background="#00000000"
-            android:text="New User? Sign up"
-            android:textColor="#9A9191" />
-    </LinearLayout>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tạo tài khoản"
+        android:id="@+id/btn_tao_tai_khoan"
+        android:layout_marginTop="30dp"
+        />
 
 </LinearLayout>

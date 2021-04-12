@@ -9,24 +9,17 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/Theme.Quan_ly_ban_hang">
+        <activity android:name=".login.ListUserActivity"></activity>
+        <activity android:name=".login.DoiMatKhau"
+            android:parentActivityName=".Activity.MainActivity"
+            ></activity>
         <activity
             android:name=".Activity.XuatActivity"
             android:parentActivityName=".Activity.MainActivity" />
         <activity
             android:name=".Activity.NhapActivity"
-            android:parentActivityName=".Activity.MainActivity" >
-
-        </activity>
-        <activity android:name=".login.login" />
-        <activity
-            android:name=".Activity.SuaSanPhamActivity"
-            android:parentActivityName=".Activity.MainActivity" />
-        <activity
-            android:name=".Activity.ThemSanPhamActivity"
-            android:parentActivityName=".Activity.MainActivity" />
-        <activity
-            android:name=".Activity.MainActivity"
-            android:theme="@style/Theme.Quan_ly_ban_hang.NoActionBar">
+            android:parentActivityName=".Activity.MainActivity"></activity>
+        <activity android:name=".login.login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -34,10 +27,20 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".Activity.SuaSanPhamActivity"
+            android:parentActivityName=".Activity.MainActivity" />
+        <activity
+            android:name=".login.ThemTaiKhoan"
+            />
+        <activity
+            android:name=".Activity.ThemSanPhamActivity"
+            android:parentActivityName=".Activity.MainActivity" />
+        <activity
+            android:name=".Activity.MainActivity"
+            android:theme="@style/Theme.Quan_ly_ban_hang.NoActionBar"></activity>
+        <activity
             android:name=".Activity.SplashScreem"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 
 </manifest>
