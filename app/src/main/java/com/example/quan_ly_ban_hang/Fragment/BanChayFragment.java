@@ -21,6 +21,7 @@ public class BanChayFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.ban_chay_fragment,container,false);
         recySPBanChay = (RecyclerView) view.findViewById(R.id.recycler_view_sp_ban_chay);
+
         return view;
     }
 }
