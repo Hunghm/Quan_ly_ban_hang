@@ -49,7 +49,7 @@ public class NhapFragment extends Fragment {
     ArrayList<HoaDon> listHoaDon;
     private ArrayList<SanPham> listSanPham;
     private SanPham sanPhamSelectedSpinner;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Nullable
     @Override
@@ -175,6 +175,7 @@ public class NhapFragment extends Fragment {
                         c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
                         HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                         hoaDonChiTiet.setHanLuuTru(c.getTime());
+                        hoaDonChiTiet.setLoaiHoaDon(1);
                         hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
                         hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
                         hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));

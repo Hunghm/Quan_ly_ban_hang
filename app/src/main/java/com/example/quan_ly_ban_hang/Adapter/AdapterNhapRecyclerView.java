@@ -25,7 +25,7 @@ public class AdapterNhapRecyclerView extends RecyclerView.Adapter<AdapterNhapRec
     private List<HoaDon> list;
     private onClickListener listenner;
     private onClickListener DeleteListenner;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public AdapterNhapRecyclerView(Context context, List<HoaDon> list) {
         this.context = context;

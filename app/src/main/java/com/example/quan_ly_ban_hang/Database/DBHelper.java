@@ -29,6 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "maSanPham INTEGER NOT NULL REFERENCES SanPham(maSanPham)," +
                 "maHoaDon INTEGER NOT NULL REFERENCES HoaDon(maHoaDon), " +
                 "soLuong INTEGER NOT NULL," +
+                "loaiHoaDon INTEGER NOT NULL," +
                 "hanLuuTru DATE )";
         db.execSQL(createTableHoaDonChiTiet);
 

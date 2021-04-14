@@ -23,7 +23,7 @@ public class AdapterXuatRecyclerView extends RecyclerView.Adapter<AdapterXuatRec
     private List<HoaDon> list;
     private onClickListener listenner;
     private onClickListener DeleteListenner;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public AdapterXuatRecyclerView(Context context, List<HoaDon> list) {
         this.context = context;
@@ -52,7 +52,8 @@ public class AdapterXuatRecyclerView extends RecyclerView.Adapter<AdapterXuatRec
     @Override
     public void onBindViewHolder(@NonNull View_holder holder, int position) {
         holder.tvMaHD.setText(String.valueOf(list.get(position).getMaHoaDon()));
-        holder.tvNgayNhap.setText(sdf.format(list.get(position).getNgayNhapXuat()));
+        holder.tvValueNgayXuat.setText(sdf.format(list.get(position).getNgayNhapXuat()));
+        holder.tvNgayXuat.setText("Ngày xuất");
     }
 
     @Override
@@ -61,12 +62,13 @@ public class AdapterXuatRecyclerView extends RecyclerView.Adapter<AdapterXuatRec
     }
 
     public static class View_holder extends RecyclerView.ViewHolder{
-        TextView tvMaHD,tvNgayNhap;
+        TextView tvMaHD,tvValueNgayXuat,tvNgayXuat;
         ImageView imgClose;
         public View_holder(@NonNull View itemView, onClickListener listener,onClickListener deleteListener)  {
             super(itemView);
             tvMaHD = (TextView) itemView.findViewById(R.id.tv_value_ma_hd);
-            tvNgayNhap = (TextView) itemView.findViewById(R.id.tv_value_ngay_nhap);
+            tvValueNgayXuat = (TextView) itemView.findViewById(R.id.tv_value_ngay_nhap);
+            tvNgayXuat = (TextView) itemView.findViewById(R.id.tv_soluong);
             imgClose = (ImageView) itemView.findViewById(R.id.imgClose);
 
             itemView.setOnClickListener(new View.OnClickListener() {

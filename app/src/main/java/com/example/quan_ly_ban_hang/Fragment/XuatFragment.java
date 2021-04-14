@@ -51,7 +51,7 @@ public class XuatFragment extends Fragment {
     ArrayList<HoaDon> listHoaDon;
     private ArrayList<SanPham> listSanPham;
     private SanPham sanPhamSelectedSpinner;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Nullable
     @Override
@@ -82,6 +82,7 @@ public class XuatFragment extends Fragment {
                 TextView tvSoLuong = (TextView) layout.findViewById(R.id.tv_value_so_san_pham);
                 TextView tvHanLuuTru = (TextView) layout.findViewById(R.id.tv_value_han_luu_tru);
                 TextView tvThanhTien = (TextView) layout.findViewById(R.id.tv_value_thanh_tien);
+                TextView tvTitleNgayNhap = (TextView) layout.findViewById(R.id.tv_ngay_nhap);
 
                 HoaDon hoaDon =listHoaDon.get(possion);
                 HoaDonChiTiet hoaDonChiTiet = donChiTietDAO.getByIDHoaDon(String.valueOf(hoaDon.getMaHoaDon()));
@@ -93,7 +94,8 @@ public class XuatFragment extends Fragment {
                 tvNgayNhap.setText(sdf.format(hoaDon.getNgayNhapXuat()));
                 tvSoLuong.setText(String.valueOf(hoaDonChiTiet.getSoLuong()));
                 tvHanLuuTru.setText(sdf.format(hoaDonChiTiet.getHanLuuTru()));
-                Double thanhTien = hoaDonChiTiet.getSoLuong()*sanPham.getGiaNhap();
+                tvTitleNgayNhap.setText("Ngày xuất");
+                Double thanhTien = hoaDonChiTiet.getSoLuong()*sanPham.getGiaXuat();
                 tvThanhTien.setText(String.valueOf(thanhTien));
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -178,6 +180,7 @@ public class XuatFragment extends Fragment {
                         c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
                         HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                         hoaDonChiTiet.setHanLuuTru(c.getTime());
+                        hoaDonChiTiet.setLoaiHoaDon(2);
                         hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
                         hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
                         hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));

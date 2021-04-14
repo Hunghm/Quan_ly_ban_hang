@@ -8,16 +8,26 @@ public class HoaDonChiTiet {
     private Integer MaHoaDon;
     private int SoLuong;
     private Date HanLuuTru;
+    private int LoaiHoaDon;
 
-    public HoaDonChiTiet(Integer maHoaDonChiTiet, Integer maSanPham, Integer maHoaDon, int soLuong, Date hanLuuTru) {
+    public HoaDonChiTiet(Integer maHoaDonChiTiet, Integer maSanPham, Integer maHoaDon, int soLuong, Date hanLuuTru, int loaiHoaDon) {
         MaHoaDonChiTiet = maHoaDonChiTiet;
         MaSanPham = maSanPham;
         MaHoaDon = maHoaDon;
         SoLuong = soLuong;
         HanLuuTru = hanLuuTru;
+        LoaiHoaDon = loaiHoaDon;
     }
 
     public HoaDonChiTiet() {
+    }
+
+    public int getLoaiHoaDon() {
+        return LoaiHoaDon;
+    }
+
+    public void setLoaiHoaDon(int loaiHoaDon) {
+        LoaiHoaDon = loaiHoaDon;
     }
 
     public Integer getMaHoaDonChiTiet() {

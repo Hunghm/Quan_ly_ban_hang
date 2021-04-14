@@ -173,7 +173,7 @@ public class SanPhamFragment extends Fragment {
                         sanPham.setGiaNhap(Double.parseDouble(edGiaNhap.getText().toString()));
                         sanPham.setGiaXuat(Double.parseDouble(edGiaXuat.getText().toString()));
                         sanPham.setGhiChu(edGhiChu.getText().toString());
-                        sanPham.setAnh(R.drawable.san_pham_icon);
+                        sanPham.setAnh(R.drawable.img_sanpham);
                         sanPham.setMaLoaiSanPham(loaiSanPham.getMaLoai());
                         long result = sanPhamDAO.insert(sanPham);
                         reloadList();

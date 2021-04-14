@@ -19,7 +19,7 @@ import java.util.List;
 public class HoaDonChiTietDAO {
 
     private SQLiteDatabase db;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     public HoaDonChiTietDAO(Context context) {
         DBHelper dbHelper = new DBHelper(context);
@@ -32,6 +32,7 @@ public class HoaDonChiTietDAO {
         values.put(Name.maSanPham, obj.getMaSanPham());
         values.put(Name.maHoaDon, obj.getMaHoaDon());
         values.put(Name.soLuong, obj.getSoLuong());
+        values.put(Name.loaiHoaDon, obj.getLoaiHoaDon());
         values.put(Name.hanLuuTru, sdf.format(obj.getHanLuuTru()));
         return db.insert("HoaDonChiTiet", null, values);
     }
@@ -42,6 +43,7 @@ public class HoaDonChiTietDAO {
         values.put(Name.maSanPham, obj.getMaSanPham());
         values.put(Name.maHoaDon, obj.getMaHoaDon());
         values.put(Name.soLuong, obj.getSoLuong());
+        values.put(Name.loaiHoaDon, obj.getLoaiHoaDon());
         values.put(Name.hanLuuTru, sdf.format(obj.getHanLuuTru()));
         return db.update("HoaDonChiTiet", values, "maHoaDonChiTiet=?", new String[]{String.valueOf(obj.getMaHoaDonChiTiet())});
     }
@@ -70,6 +72,7 @@ public class HoaDonChiTietDAO {
             obj.setMaSanPham(c.getInt(c.getColumnIndex(Name.maSanPham)));
             obj.setMaHoaDon(c.getInt(c.getColumnIndex(Name.maHoaDon)));
             obj.setSoLuong(c.getInt(c.getColumnIndex(Name.soLuong)));
+            obj.setLoaiHoaDon(c.getInt(c.getColumnIndex(Name.loaiHoaDon)));
             try {
                 obj.setHanLuuTru((Date) sdf.parse(c.getString(c.getColumnIndex(Name.hanLuuTru))));
             } catch (ParseException e) {
@@ -87,7 +90,10 @@ public class HoaDonChiTietDAO {
     }
 
     public List<Top> getTop(){
-        String sqlTop = "SELECT maSanPham, sum(soLuong) as soLuong, count(maSanPham) as soHoaDon FROM HoaDonChiTiet GROUP BY maSanPham ORDER BY soLuong DESC LIMIT 10";
+//        String sqlTop = "SELECT maSanPham, sum(soLuong) as soLuong, count(maSanPham) as soHoaDon FROM HoaDonChiTiet GROUP BY maSanPham ORDER BY soLuong DESC LIMIT 10";
+        String sqlTop = "SELECT maSanPham, sum(soLuong) as soLuong, count(maSanPham) as soHoaDon FROM HoaDonChiTiet \n" +
+                        "WHERE loaiHoaDon = 2 \n" +
+                        "GROUP BY maSanPham ORDER BY soLuong DESC LIMIT 10";
         List<Top> list = new ArrayList<>();
         Cursor c = db.rawQuery(sqlTop,null);
         while (c.moveToNext()) {
@@ -105,7 +111,7 @@ public class HoaDonChiTietDAO {
         public static String maHoaDonChiTiet = "maHoaDonChiTiet";
         public static String maSanPham = "maSanPham";
         public static String maHoaDon = "maHoaDon";
-        public static String thanhTien = "thanhTien";
+        public static String loaiHoaDon = "loaiHoaDon";
         public static String soLuong = "soLuong";
         public static String hanLuuTru = "hanLuuTru";
     }
