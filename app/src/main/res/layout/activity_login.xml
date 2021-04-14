@@ -48,7 +48,7 @@
                     android:id="@+id/ed_user_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="User Name"
+                    android:hint="Tên đăng nhập"
                     android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,7 +63,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:hint="Password"
+                    android:hint="Mật khẩu"
                     android:inputType="textPassword"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
         android:fontFamily="casual"
-        android:text="Remember me?" />
+        android:text="Nhớ mật khẩu?" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -89,7 +89,7 @@
             android:layout_marginTop="20dp"
             android:fontFamily="casual"
             android:layout_gravity="center"
-            android:text="Login"
+            android:text="Đăng nhập"
             android:textColor="@color/white" />
 
         <Button

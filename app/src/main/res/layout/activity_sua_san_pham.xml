@@ -12,11 +12,12 @@
         android:id="@+id/tv_title2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_light"
+        android:background="#F07B52"
         android:gravity="center"
         android:text="Sửa sản phẩm"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="30sp"
+        android:padding="15px"
         android:textStyle="bold" />
 
     <ImageView
@@ -34,8 +35,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30px"
         android:layout_below="@+id/imageView2"
-        android:textColor="@color/black"
-        android:text="Ma san pham" />
+        android:textColor="#F07B52"
+        android:text="Mã sản phẩm" />
 
     <EditText
         android:id="@+id/ed_ma_sp_edit"
@@ -52,8 +53,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ed_ma_sp_edit"
-        android:textColor="@color/black"
-        android:text="Ten san pham" />
+        android:textColor="#F07B52"
+        android:text="Tên sản phẩm" />
 
     <EditText
         android:id="@+id/ed_ten_sp_edit"
@@ -68,8 +69,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ed_ten_sp_edit"
-        android:textColor="@color/black"
-        android:text="Loai san pham" />
+        android:textColor="#F07B52"
+        android:text="Loại sản phẩm" />
 
     <Spinner
         android:id="@+id/spn_loai_sp_edit"
@@ -84,9 +85,9 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="#F07B52"
         android:layout_below="@+id/spn_loai_sp_edit"
-        android:text="Gia nhap" />
+        android:text="Giá nhập" />
 
     <EditText
         android:id="@+id/ed_gia_nhap_edit"
@@ -100,9 +101,9 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="#F07B52"
         android:layout_below="@+id/ed_gia_nhap_edit"
-        android:text="Gia xuat" />
+        android:text="Giá xuất" />
 
     <EditText
         android:id="@+id/ed_gia_xuat_edit"
@@ -115,9 +116,9 @@
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
+        android:textColor="#F07B52"
         android:layout_below="@+id/ed_gia_xuat_edit"
-        android:text="Ghi chu" />
+        android:text="Ghi chú" />
 
     <EditText
         android:id="@+id/ed_ghi_chu_edit"
@@ -133,6 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ed_ghi_chu_edit"
         android:layout_marginTop="30dp"
+        android:textColor="@color/white"
         android:layout_centerHorizontal="true"
         android:text="Sửa" />
 

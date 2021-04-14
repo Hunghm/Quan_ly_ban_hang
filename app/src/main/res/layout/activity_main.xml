@@ -17,7 +17,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/design_default_color_primary"
+            android:background="#F07B52"
             android:elevation="4dp"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
@@ -35,8 +35,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:background="@color/purple_700"
-            app:itemIconTint="@color/color"
-            app:itemTextColor="@color/white"
+            app:itemIconTint="@android:color/primary_text_dark_nodisable"
+            app:itemTextColor="@android:color/primary_text_dark_nodisable"
             app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_navigation_menu" />
 
