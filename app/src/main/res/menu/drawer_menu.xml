@@ -6,16 +6,16 @@
         android:title="Danh sách người dùng" />
     <item
         android:id="@+id/item_2"
-        android:icon="@drawable/ic_baseline_info_24"
+        android:icon="@android:drawable/ic_menu_add"
         android:title="Thêm tài khoản" />
     <item
         android:id="@+id/item_3"
-        android:icon="@drawable/ic_baseline_settings_24"
+        android:icon="@android:drawable/ic_lock_idle_lock"
         android:title="Đổi mật khẩu" />
 
     <item
         android:id="@+id/item_4"
-       android:icon="@drawable/ic_baseline_settings_24"
+       android:icon="@drawable/abc_vector_test"
         android:title="Đăng xuất" />
 
 </menu>
