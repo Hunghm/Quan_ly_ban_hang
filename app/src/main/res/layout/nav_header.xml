@@ -30,11 +30,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nhom 3. Du An Mot"
+        android:text="Nhom 3. Dự án I"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Quan Ly Kho Hang"
+        android:text="Quản lý kho hàng"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 </LinearLayout>

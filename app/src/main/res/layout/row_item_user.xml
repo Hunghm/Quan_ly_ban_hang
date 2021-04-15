@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/img_product"
@@ -26,7 +25,7 @@
             android:id="@+id/tv_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="User:"
+            android:text="Tên đăng nhập:"
             android:padding="5dp"
             android:textStyle="bold" />
 
@@ -36,14 +35,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_user"
             android:padding="5dp"
-            android:text="Password: "
+            android:text="Mật khẩu: "
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_value_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="76dp"
             android:layout_toRightOf="@+id/tv_soluong_hoadon"
             android:padding="5dp"
             android:text="Trà xanh 0 độ" />

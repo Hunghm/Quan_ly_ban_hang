@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingTop="10dp"
-    android:paddingBottom="10dp">
+    android:padding="10dp">
 
     <ImageView
         android:id="@+id/img_product"
@@ -27,7 +26,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:text="Ma HD: "
+            android:text="Mã Hóa Đơn: "
             android:textStyle="bold" />
 
         <TextView
@@ -36,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_ma_hdct"
             android:padding="5dp"
-            android:text="Ngay nhap: "
+            android:text="Ngày nhập: "
             android:textStyle="bold" />
 
         <TextView

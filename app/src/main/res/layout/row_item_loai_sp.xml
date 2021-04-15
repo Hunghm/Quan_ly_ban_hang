@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardCornerRadius="4dp"
+    android:padding="10dp"
     android:layout_margin="4dp">
 
     <RelativeLayout
@@ -27,7 +28,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/btn_xoa"
             android:textColor="@color/white"
-            android:text="Xoa"
+            android:text="XÓA"
             android:layout_alignParentEnd="true"
             />
     </RelativeLayout>

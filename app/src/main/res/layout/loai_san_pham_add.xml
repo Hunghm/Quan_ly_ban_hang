@@ -11,11 +11,12 @@
         android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_orange_light"
+        android:background="#F07B52"
         android:gravity="center"
         android:text="Thêm loại sản phẩm"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="30sp"
+        android:padding="15px"
         android:textStyle="bold" />
 
     <ImageView
@@ -44,6 +45,7 @@
         android:layout_below="@+id/ed_ten_san_pham"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:text="ADD" />
+        android:textColor="@color/white"
+        android:text="Thêm" />
 
 </RelativeLayout>

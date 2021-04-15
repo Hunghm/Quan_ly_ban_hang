@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="18px"
     tools:context=".Activity.XuatActivity">
 
     <TextView
@@ -13,8 +14,9 @@
         android:gravity="center"
         android:textSize="30sp"
         android:id="@+id/tv_title"
-        android:background="@android:color/holo_orange_light"
-        android:textColor="@color/black"
+        android:background="#F07B52"
+        android:padding="15px"
+        android:textColor="@color/white"
         android:textStyle="bold"
         />
 
@@ -64,7 +66,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_add"
-        android:text="ADD"
+        android:text="Thêm"
+        android:textColor="@color/white"
         android:layout_below="@+id/ed_thanh_tien_xuat"
         android:layout_marginTop="80dp"
         android:layout_centerHorizontal="true"/>
