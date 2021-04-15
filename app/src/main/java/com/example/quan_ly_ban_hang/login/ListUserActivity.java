@@ -40,5 +40,12 @@ public class ListUserActivity extends AppCompatActivity {
         recySPUser.setAdapter(adapterUserRecycler);
         Toast.makeText(this, String.valueOf(listTop.size()), Toast.LENGTH_SHORT).show();
 
+        adapterUserRecycler.onClickDeleteListener(new AdapterUserRecycler.onClickListener() {
+            @Override
+            public void onClick(int possion) {
+
+            }
+        });
+
     }
 }

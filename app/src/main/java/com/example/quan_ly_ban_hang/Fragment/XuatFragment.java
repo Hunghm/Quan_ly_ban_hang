@@ -169,30 +169,33 @@ public class XuatFragment extends Fragment {
                 btn_them.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        HoaDon hoaDon = new HoaDon();
-                        hoaDon.setLoaiHoaDon(2);
-                        hoaDon.setNgayNhapXuat(Calendar.getInstance().getTime());
-                        long resultHoaDon = hoaDonDAO.insert(hoaDon);
-                        HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
+                        if (valiDate(edSoSanPham,edHanLuuTru)) {
+                            HoaDon hoaDon = new HoaDon();
+                            hoaDon.setLoaiHoaDon(2);
+                            hoaDon.setNgayNhapXuat(Calendar.getInstance().getTime());
+                            long resultHoaDon = hoaDonDAO.insert(hoaDon);
+                            HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
 
-                        Calendar c = Calendar.getInstance();
-                        c.setTime(Calendar.getInstance().getTime());
-                        c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
-                        HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-                        hoaDonChiTiet.setHanLuuTru(c.getTime());
-                        hoaDonChiTiet.setLoaiHoaDon(2);
-                        hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
-                        hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
-                        hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));
+                            Calendar c = Calendar.getInstance();
+                            c.setTime(Calendar.getInstance().getTime());
+                            c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
+                            HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+                            hoaDonChiTiet.setHanLuuTru(c.getTime());
+                            hoaDonChiTiet.setLoaiHoaDon(2);
+                            hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
+                            hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
+                            hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));
 
-                        long resultHoaDonChiTiet =  donChiTietDAO.insert(hoaDonChiTiet);
-                        if(resultHoaDonChiTiet > 0){
-                            adapterXuatRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("2"));
-                            reload();
+                            long resultHoaDonChiTiet = donChiTietDAO.insert(hoaDonChiTiet);
+                            if (resultHoaDonChiTiet > 0) {
+                                adapterXuatRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("2"));
+                                reload();
+                            }
+                            alertDialog.dismiss();
+                            Toast.makeText(getContext(), String.valueOf(resultHoaDonChiTiet), Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getContext(), "Điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                         }
-                        alertDialog.dismiss();
-                        Toast.makeText(getContext(), String.valueOf(resultHoaDonChiTiet), Toast.LENGTH_SHORT).show();
-
                     }
                 });
 
@@ -207,6 +210,15 @@ public class XuatFragment extends Fragment {
     public void reload(){
         listHoaDon.clear();
         listHoaDon.addAll( hoaDonDAO.layTheoLoai("2"));
+    }
+
+    public boolean valiDate(EditText... editTexts){
+        for (int i=0; i<editTexts.length ;i++ ){
+            if(editTexts[i].getText().toString().isEmpty()){
+                return false;
+            };
+        }
+        return true;
     }
 
     private void them() {

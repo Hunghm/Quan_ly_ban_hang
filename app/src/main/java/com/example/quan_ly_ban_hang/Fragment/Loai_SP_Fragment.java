@@ -87,13 +87,17 @@ public class Loai_SP_Fragment extends Fragment {
                 btnAdd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        LoaiSanPham loaiSanPham = new LoaiSanPham();
-                        loaiSanPham.setTenLoai(edTenSanPham.getText().toString());
-                        long result = loaiSanPhamDAO.insert(loaiSanPham);
-                        Toast.makeText(getContext(), String.valueOf(result), Toast.LENGTH_SHORT).show();
-                        reloadList();
-                        alertDialog.dismiss();
-                        adapter.refresh((ArrayList) loaiSanPhamDAO.getAll());
+                        if (valiDate(edTenSanPham)) {
+                            LoaiSanPham loaiSanPham = new LoaiSanPham();
+                            loaiSanPham.setTenLoai(edTenSanPham.getText().toString());
+                            long result = loaiSanPhamDAO.insert(loaiSanPham);
+                            Toast.makeText(getContext(), String.valueOf(result), Toast.LENGTH_SHORT).show();
+                            reloadList();
+                            alertDialog.dismiss();
+                            adapter.refresh((ArrayList) loaiSanPhamDAO.getAll());
+                        }else {
+                            Toast.makeText(getContext(), "Điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 alertDialog.show();
@@ -104,5 +108,13 @@ public class Loai_SP_Fragment extends Fragment {
     public void reloadList(){
         list.clear();
         list.addAll((ArrayList<LoaiSanPham>) loaiSanPhamDAO.getAll());
+    }
+    public boolean valiDate(EditText... editTexts){
+        for (int i=0; i<editTexts.length ;i++ ){
+            if(editTexts[i].getText().toString().isEmpty()){
+                return false;
+            };
+        }
+        return true;
     }
 }

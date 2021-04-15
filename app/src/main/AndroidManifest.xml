@@ -10,9 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Quan_ly_ban_hang">
         <activity android:name=".login.ListUserActivity"></activity>
+
         <activity android:name=".login.DoiMatKhau"
-            android:parentActivityName=".Activity.MainActivity"
             ></activity>
+
         <activity
             android:name=".Activity.XuatActivity"
             android:parentActivityName=".Activity.MainActivity" />

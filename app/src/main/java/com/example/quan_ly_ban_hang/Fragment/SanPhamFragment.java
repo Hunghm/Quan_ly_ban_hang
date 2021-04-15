@@ -168,18 +168,22 @@ public class SanPhamFragment extends Fragment {
                 btn_them.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        SanPham sanPham = new SanPham();
-                        sanPham.setTenSanPham(edTenSP.getText().toString());
-                        sanPham.setGiaNhap(Double.parseDouble(edGiaNhap.getText().toString()));
-                        sanPham.setGiaXuat(Double.parseDouble(edGiaXuat.getText().toString()));
-                        sanPham.setGhiChu(edGhiChu.getText().toString());
-                        sanPham.setAnh(R.drawable.img_sanpham);
-                        sanPham.setMaLoaiSanPham(loaiSanPham.getMaLoai());
-                        long result = sanPhamDAO.insert(sanPham);
-                        reloadList();
-                        adapterSanPhamRecy.refresh((ArrayList) sanPhamDAO.getAll());
-                        alertDialog.dismiss();
-                        Toast.makeText(getContext(), String.valueOf(result), Toast.LENGTH_SHORT).show();
+                        if (valiDate(edTenSP,edGiaNhap,edGiaXuat)) {
+                            SanPham sanPham = new SanPham();
+                            sanPham.setTenSanPham(edTenSP.getText().toString());
+                            sanPham.setGiaNhap(Double.parseDouble(edGiaNhap.getText().toString()));
+                            sanPham.setGiaXuat(Double.parseDouble(edGiaXuat.getText().toString()));
+                            sanPham.setGhiChu(edGhiChu.getText().toString());
+                            sanPham.setAnh(R.drawable.img_sanpham);
+                            sanPham.setMaLoaiSanPham(loaiSanPham.getMaLoai());
+                            long result = sanPhamDAO.insert(sanPham);
+                            reloadList();
+                            adapterSanPhamRecy.refresh((ArrayList) sanPhamDAO.getAll());
+                            alertDialog.dismiss();
+                            Toast.makeText(getContext(), String.valueOf(result), Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getContext(), "Điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
                 alertDialog.show();
@@ -193,4 +197,14 @@ public class SanPhamFragment extends Fragment {
         listSanPham.clear();
         listSanPham.addAll( sanPhamDAO.getAll());
     }
+
+    public boolean valiDate(EditText... editTexts){
+        for (int i=0; i<editTexts.length ;i++ ){
+            if(editTexts[i].getText().toString().isEmpty()){
+                return false;
+            };
+        }
+        return true;
+    }
+
 }

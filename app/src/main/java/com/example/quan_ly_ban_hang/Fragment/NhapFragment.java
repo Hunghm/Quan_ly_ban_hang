@@ -164,30 +164,33 @@ public class NhapFragment extends Fragment {
                 btn_them.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        HoaDon hoaDon = new HoaDon();
-                        hoaDon.setLoaiHoaDon(1);
-                        hoaDon.setNgayNhapXuat(Calendar.getInstance().getTime());
-                        long resultHoaDon = hoaDonDAO.insert(hoaDon);
-                        HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
+                        if (valiDate(edSoSanPham,edHanLuuTru)) {
+                            HoaDon hoaDon = new HoaDon();
+                            hoaDon.setLoaiHoaDon(1);
+                            hoaDon.setNgayNhapXuat(Calendar.getInstance().getTime());
+                            long resultHoaDon = hoaDonDAO.insert(hoaDon);
+                            HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
 
-                        Calendar c = Calendar.getInstance();
-                        c.setTime(Calendar.getInstance().getTime());
-                        c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
-                        HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-                        hoaDonChiTiet.setHanLuuTru(c.getTime());
-                        hoaDonChiTiet.setLoaiHoaDon(1);
-                        hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
-                        hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
-                        hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));
+                            Calendar c = Calendar.getInstance();
+                            c.setTime(Calendar.getInstance().getTime());
+                            c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
+                            HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+                            hoaDonChiTiet.setHanLuuTru(c.getTime());
+                            hoaDonChiTiet.setLoaiHoaDon(1);
+                            hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
+                            hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
+                            hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));
 
-                        long resultHoaDonChiTiet =  donChiTietDAO.insert(hoaDonChiTiet);
-                        if(resultHoaDonChiTiet > 0){
-                            adapterNhapRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("1"));
-                            reload();
+                            long resultHoaDonChiTiet = donChiTietDAO.insert(hoaDonChiTiet);
+                            if (resultHoaDonChiTiet > 0) {
+                                adapterNhapRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("1"));
+                                reload();
+                            }
+                            alertDialog.dismiss();
+                            Toast.makeText(getContext(), String.valueOf(resultHoaDonChiTiet), Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(getContext(), "Điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                         }
-                        alertDialog.dismiss();
-                        Toast.makeText(getContext(), String.valueOf(resultHoaDonChiTiet), Toast.LENGTH_SHORT).show();
-
                     }
                 });
 
@@ -202,8 +205,17 @@ public class NhapFragment extends Fragment {
         listHoaDon.addAll( hoaDonDAO.layTheoLoai("1"));
     }
 
-    public void them() {
-        Toast.makeText(getContext(), "bam vao add", Toast.LENGTH_SHORT).show();
+    public boolean valiDate(EditText... editTexts){
+        for (int i=0; i<editTexts.length ;i++ ){
+            if(editTexts[i].getText().toString().isEmpty()){
+                return false;
+            };
+        }
+        return true;
     }
+
+//    public void them() {
+//        Toast.makeText(getContext(), "bam vao add", Toast.LENGTH_SHORT).show();
+//    }
 
 }

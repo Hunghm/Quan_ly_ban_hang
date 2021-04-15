@@ -8,6 +8,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -68,6 +69,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Intent intent =getIntent();
         nguoiDung = intent.getStringExtra("user");
+        Toast.makeText(this, nguoiDung, Toast.LENGTH_SHORT).show();
+        Log.e("user",nguoiDung);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
