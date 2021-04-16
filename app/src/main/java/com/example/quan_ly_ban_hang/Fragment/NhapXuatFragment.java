@@ -1,8 +1,6 @@
 package com.example.quan_ly_ban_hang.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import com.example.quan_ly_ban_hang.Adapter.ViewPagerAdapter;
+import com.example.quan_ly_ban_hang.Adapter.ViewPagerNhapXuatAdapter;
 import com.example.quan_ly_ban_hang.R;
 import com.google.android.material.tabs.TabLayout;
 
@@ -30,7 +28,7 @@ public class NhapXuatFragment extends Fragment {
         tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         viewPager = (ViewPager) view.findViewById(R.id.view_pager);
 
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager(),
+        ViewPagerNhapXuatAdapter viewPagerAdapter = new ViewPagerNhapXuatAdapter(getActivity().getSupportFragmentManager(),
                 FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);

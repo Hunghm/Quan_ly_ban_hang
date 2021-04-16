@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F07B52"
+        android:gravity="center"
+        android:padding="15px"
+        android:text="THỐNG KÊ TÙY CHỌN"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_title_tu_ngay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_alignLeft="@+id/tv_title"
+        android:layout_marginLeft="45dp"
+        android:layout_marginTop="30dp"
+        android:text="Từ ngày: " />
+
+    <TextView
+        android:id="@+id/tv_title_den_ngay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title"
+        android:layout_alignRight="@+id/tv_title"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="45dp"
+        android:text="Đến ngày: " />
+
+    <Button
+        android:id="@+id/btn_ngay_bd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title_tu_ngay"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Chọn ngày"
+        android:textColor="#fff" />
+
+    <Button
+        android:id="@+id/btn_ngay_kt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_title_tu_ngay"
+        android:layout_alignRight="@+id/tv_title"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:text="Chọn ngày"
+        android:textColor="#fff" />
+
+    <TextView
+        android:id="@+id/tv_tong_chi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_ngay_bd"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="100dp"
+        android:text="Tổng chi:"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_tong_thu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_tong_chi"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Tổng thu:"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_lai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_tong_thu"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Lãi:"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_value_tong_chi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_ngay_bd"
+        android:layout_toRightOf="@+id/tv_tong_chi"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:text="1.000.000"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_don_vi_value_tong_chi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_ngay_bd"
+        android:layout_toRightOf="@+id/tv_value_tong_chi"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:text="VND"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_value_tong_thu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_tong_chi"
+        android:layout_alignLeft="@+id/tv_value_tong_chi"
+        android:layout_marginTop="20dp"
+        android:text="500.000"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_don_vi_value_tong_thu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_tong_chi"
+        android:layout_toRightOf="@+id/tv_value_tong_thu"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="VND"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_value_lai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_value_tong_thu"
+        android:layout_alignLeft="@+id/tv_value_tong_chi"
+        android:layout_marginTop="20dp"
+        android:text="500.000"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_don_vi_value_lai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_don_vi_value_tong_thu"
+        android:layout_toRightOf="@+id/tv_value_lai"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="VND"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

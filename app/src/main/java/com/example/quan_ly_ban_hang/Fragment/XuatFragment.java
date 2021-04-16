@@ -140,14 +140,14 @@ public class XuatFragment extends Fragment {
 //                Toast.makeText(getContext(), "ABCD", Toast.LENGTH_SHORT).show();
 //                startActivity(new Intent(getContext(), NhapActivity.class));
                 LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.activity_nhap,null);
+                View layout = inflater.inflate(R.layout.activity_xuat,null);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setView(layout);
                 AlertDialog alertDialog = builder.create();
 
-                EditText edSoSanPham = (EditText) layout.findViewById(R.id.ed_so_san_pham);
-                EditText edHanLuuTru = (EditText) layout.findViewById(R.id.ed_han_luu_tru);
-                Spinner spinnerSanPham = (Spinner) layout.findViewById(R.id.spinner_san_pham);
+                EditText edSoSanPham = (EditText) layout.findViewById(R.id.ed_so_san_pham_xuat);
+//                EditText edHanLuuTru = (EditText) layout.findViewById(R.id.ed_han_luu_tru);
+                Spinner spinnerSanPham = (Spinner) layout.findViewById(R.id.spinner_san_pham_xuat);
                 Button btn_them = (Button) layout.findViewById(R.id.btn_add);
 
                 listSanPham = (ArrayList<SanPham>) sanPhamDAO.getAll();
@@ -169,18 +169,18 @@ public class XuatFragment extends Fragment {
                 btn_them.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (valiDate(edSoSanPham,edHanLuuTru)) {
+                        if (valiDate(edSoSanPham)) {
                             HoaDon hoaDon = new HoaDon();
                             hoaDon.setLoaiHoaDon(2);
                             hoaDon.setNgayNhapXuat(Calendar.getInstance().getTime());
                             long resultHoaDon = hoaDonDAO.insert(hoaDon);
                             HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
 
-                            Calendar c = Calendar.getInstance();
-                            c.setTime(Calendar.getInstance().getTime());
-                            c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
+//                            Calendar c = Calendar.getInstance();
+//                            c.setTime(Calendar.getInstance().getTime());
+//                            c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
                             HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-                            hoaDonChiTiet.setHanLuuTru(c.getTime());
+//                            hoaDonChiTiet.setHanLuuTru(c.getTime());
                             hoaDonChiTiet.setLoaiHoaDon(2);
                             hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
                             hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());

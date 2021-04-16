@@ -17,9 +17,7 @@ public class XuatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_xuat);
-        edMaHDXuat = findViewById(R.id.ed_ma_hd_xuat);
         edSoSPXuat = findViewById(R.id.ed_so_san_pham_xuat);
-        edThanhTienXuat = findViewById(R.id.ed_thanh_tien_xuat);
         spnSanPhamXuat = findViewById(R.id.spinner_san_pham_xuat);
     }
     @Nullable

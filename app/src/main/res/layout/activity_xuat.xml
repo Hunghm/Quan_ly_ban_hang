@@ -29,20 +29,11 @@
         android:layout_marginTop="20dp"
         android:src="@drawable/bill" />
 
-    <EditText
-        android:id="@+id/ed_ma_hd_xuat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/img_san_pham"
-        android:layout_marginTop="30dp"
-        android:hint="nhập mã hóa đơn "
-        android:inputType="text" />
-
     <Spinner
         android:id="@+id/spinner_san_pham_xuat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ed_ma_hd_xuat"
+        android:layout_below="@+id/img_san_pham"
         android:layout_marginTop="30dp" />
 
     <EditText
@@ -54,21 +45,13 @@
         android:hint="Số sản phẩm"
         android:inputType="text" />
 
-    <EditText
-        android:id="@+id/ed_thanh_tien_xuat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ed_so_san_pham_xuat"
-        android:layout_marginTop="30dp"
-        android:hint="Thành tiền" />
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btn_add"
         android:text="Thêm"
         android:textColor="@color/white"
-        android:layout_below="@+id/ed_thanh_tien_xuat"
+        android:layout_below="@+id/ed_so_san_pham_xuat"
         android:layout_marginTop="80dp"
         android:layout_centerHorizontal="true"/>
 
