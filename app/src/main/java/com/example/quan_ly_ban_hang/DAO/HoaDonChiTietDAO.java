@@ -83,6 +83,15 @@ public class HoaDonChiTietDAO {
         return list;
     }
 
+    public long insertHDXuat(HoaDonChiTiet obj) {
+        ContentValues values = new ContentValues();
+        values.put(Name.maSanPham, obj.getMaSanPham());
+        values.put(Name.maHoaDon, obj.getMaHoaDon());
+        values.put(Name.soLuong, obj.getSoLuong());
+        values.put(Name.loaiHoaDon, obj.getLoaiHoaDon());
+        return db.insert("HoaDonChiTiet", null, values);
+    }
+
     public HoaDonChiTiet getByIDHoaDon(String idHoaDon) {
         String sql = "SELECT * FROM HoaDonChiTiet WHERE maHoaDon=?";
         List<HoaDonChiTiet> list = getData(sql, idHoaDon);

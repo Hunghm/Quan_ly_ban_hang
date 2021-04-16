@@ -186,7 +186,7 @@ public class XuatFragment extends Fragment {
                             hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
                             hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));
 
-                            long resultHoaDonChiTiet = donChiTietDAO.insert(hoaDonChiTiet);
+                            long resultHoaDonChiTiet = donChiTietDAO.insertHDXuat(hoaDonChiTiet);
                             if (resultHoaDonChiTiet > 0) {
                                 adapterXuatRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("2"));
                                 reload();
