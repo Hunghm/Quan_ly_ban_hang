@@ -53,7 +53,7 @@ public class AdapterTopSpRecycler extends RecyclerView.Adapter<AdapterTopSpRecyc
         holder.tvSoLuongHD.setText(String.valueOf(list.get(position).getSoHoaDon()));
         holder.tvMaSanPham.setText(String.valueOf(list.get(position).getMaSanPham()));
         holder.tvSoLuong.setText(String.valueOf(list.get(position).getSoLuong()));
-        holder.imgIcon.setImageResource(R.drawable.img_sanpham);
+//        holder.imgIcon.setImageResource(R.drawable.img_sanpham);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class AdapterTopSpRecycler extends RecyclerView.Adapter<AdapterTopSpRecyc
 
         public View_holder(@NonNull View itemView, onClickListener listener, onClickListener deleteListenner) {
             super(itemView);
-            imgClose = (ImageView) itemView.findViewById(R.id.imgClose);
+//            imgClose = (ImageView) itemView.findViewById(R.id.imgClose);
             imgIcon = (ImageView) itemView.findViewById(R.id.img_product);
             tvMaSanPham = (TextView) itemView.findViewById(R.id.tv_value_ma_san_pham);
             tvSoLuong = (TextView) itemView.findViewById(R.id.tv_value_soluong);
@@ -82,14 +82,14 @@ public class AdapterTopSpRecycler extends RecyclerView.Adapter<AdapterTopSpRecyc
                 }
             });
 
-            imgClose.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (listener != null) {
-                        deleteListenner.onClick(getAdapterPosition());
-                    }
-                }
-            });
+//            imgClose.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    if (listener != null) {
+//                        deleteListenner.onClick(getAdapterPosition());
+//                    }
+//                }
+//            });
 
         }
     }

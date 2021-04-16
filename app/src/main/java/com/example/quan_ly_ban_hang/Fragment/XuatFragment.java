@@ -140,14 +140,14 @@ public class XuatFragment extends Fragment {
 //                Toast.makeText(getContext(), "ABCD", Toast.LENGTH_SHORT).show();
 //                startActivity(new Intent(getContext(), NhapActivity.class));
                 LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.activity_xuat,null);
+                View layout = inflater.inflate(R.layout.activity_nhap,null);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setView(layout);
                 AlertDialog alertDialog = builder.create();
 
-                EditText edSoSanPham = (EditText) layout.findViewById(R.id.ed_so_san_pham_xuat);
-//                EditText edHanLuuTru = (EditText) layout.findViewById(R.id.ed_han_luu_tru);
-                Spinner spinnerSanPham = (Spinner) layout.findViewById(R.id.spinner_san_pham_xuat);
+                EditText edSoSanPham = (EditText) layout.findViewById(R.id.ed_so_san_pham);
+                EditText edHanLuuTru = (EditText) layout.findViewById(R.id.ed_han_luu_tru);
+                Spinner spinnerSanPham = (Spinner) layout.findViewById(R.id.spinner_san_pham);
                 Button btn_them = (Button) layout.findViewById(R.id.btn_add);
 
                 listSanPham = (ArrayList<SanPham>) sanPhamDAO.getAll();
@@ -176,17 +176,17 @@ public class XuatFragment extends Fragment {
                             long resultHoaDon = hoaDonDAO.insert(hoaDon);
                             HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
 
-//                            Calendar c = Calendar.getInstance();
-//                            c.setTime(Calendar.getInstance().getTime());
-//                            c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
+                            Calendar c = Calendar.getInstance();
+                            c.setTime(Calendar.getInstance().getTime());
+                            c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
                             HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-//                            hoaDonChiTiet.setHanLuuTru(c.getTime());
+                            hoaDonChiTiet.setHanLuuTru(c.getTime());
                             hoaDonChiTiet.setLoaiHoaDon(2);
                             hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
                             hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
                             hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));
 
-                            long resultHoaDonChiTiet = donChiTietDAO.insertHDXuat(hoaDonChiTiet);
+                            long resultHoaDonChiTiet = donChiTietDAO.insert(hoaDonChiTiet);
                             if (resultHoaDonChiTiet > 0) {
                                 adapterXuatRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("2"));
                                 reload();

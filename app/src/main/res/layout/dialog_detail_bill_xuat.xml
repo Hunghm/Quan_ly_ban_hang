@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/img_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/bill" />
+
+    <TextView
+        android:id="@+id/tv_mahd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_san_pham"
+        android:layout_marginTop="20dp"
+        android:text="Mã hóa đơn"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tv_value_mahd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_mahd"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@+id/tv_mahd"
+        android:text="hd03"
+        android:textColor="@color/black"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tv_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_mahd"
+        android:layout_marginTop="20dp"
+        android:text="Sản phẩm" />
+
+    <TextView
+        android:id="@+id/tv_value_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_mahd"
+        android:layout_alignTop="@+id/tv_san_pham"
+        android:text="SP01" />
+
+    <TextView
+        android:id="@+id/tv_ngay_nhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_san_pham"
+        android:text="Ngày nhập" />
+
+    <TextView
+        android:id="@+id/tv_value_ngay_nhap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_mahd"
+        android:layout_alignTop="@+id/tv_ngay_nhap"
+        android:text="12/01/2021" />
+
+    <TextView
+        android:id="@+id/tv_so_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_ngay_nhap"
+        android:text="Số sản phẩm" />
+
+    <TextView
+        android:id="@+id/tv_value_so_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_mahd"
+        android:layout_alignTop="@+id/tv_so_san_pham"
+        android:text="50 thùng" />
+
+    <TextView
+        android:id="@+id/tv_thanh_tien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_so_san_pham"
+        android:layout_marginTop="0dp"
+        android:text="Thành tiền" />
+
+    <TextView
+        android:id="@+id/tv_value_thanh_tien"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_value_mahd"
+        android:layout_alignTop="@+id/tv_thanh_tien"
+        android:text="1.000.0000" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tv_thanh_tien"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/tv_value_thanh_tien"
+        android:text="VND"
+        android:textStyle="bold"
+        android:paddingBottom="50dp" />
+
+
+
+
+</RelativeLayout>
