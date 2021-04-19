@@ -56,21 +56,21 @@ public class ThongKeTuyChonFragment extends Fragment {
 
         thongKeDAO = new ThongKeDAO(getContext());
 
+        Calendar calendarBD = Calendar.getInstance();
         btnNgayBD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(calendar.YEAR);
-                int month = calendar.get(calendar.MONTH);
-                int day = calendar.get(calendar.DAY_OF_MONTH);
+                int year = calendarBD.get(calendarBD.YEAR);
+                int month = calendarBD.get(calendarBD.MONTH);
+                int day = calendarBD.get(calendarBD.DAY_OF_MONTH);
                 DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
 
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        calendar.set(Calendar.YEAR, year);
-                        calendar.set(Calendar.MONTH, monthOfYear);
-                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                        ngayBD = calendar.getTime();
+                        calendarBD.set(Calendar.YEAR, year);
+                        calendarBD.set(Calendar.MONTH, monthOfYear);
+                        calendarBD.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        ngayBD = calendarBD.getTime();
                         btnNgayBD.setText(sdfHienThi.format(ngayBD));
                     }
                 };
@@ -81,21 +81,21 @@ public class ThongKeTuyChonFragment extends Fragment {
             }
         });
 
+        Calendar calendarKT = Calendar.getInstance();
         btnNgayKT.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar calendar = Calendar.getInstance();
-                int year = calendar.get(calendar.YEAR);
-                int month = calendar.get(calendar.MONTH);
-                int day = calendar.get(calendar.DAY_OF_MONTH);
+                int year = calendarKT.get(calendarKT.YEAR);
+                int month = calendarKT.get(calendarKT.MONTH);
+                int day = calendarKT.get(calendarKT.DAY_OF_MONTH);
                 DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
 
                     @Override
                     public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-                        calendar.set(Calendar.YEAR, year);
-                        calendar.set(Calendar.MONTH, monthOfYear);
-                        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                        ngayKT = calendar.getTime();
+                        calendarKT.set(Calendar.YEAR, year);
+                        calendarKT.set(Calendar.MONTH, monthOfYear);
+                        calendarKT.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        ngayKT = calendarKT.getTime();
                         btnNgayKT.setText(sdfHienThi.format(ngayKT));
                     }
                 };
@@ -109,12 +109,16 @@ public class ThongKeTuyChonFragment extends Fragment {
         btnXem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<TKTuyChon> list = new ArrayList<>();
-                list = thongKeDAO.getTKTheoNgay(sdfLuu.format(ngayBD),sdfLuu.format(ngayKT));
-                tvTongChi.setText(String.valueOf(list.get(0).getTongChi()));
-                tvTongThu.setText(String.valueOf(list.get(0).getTongThu()));
-                Double lai = list.get(0).getTongThu() - list.get(0).getTongChi();
-                tvLai.setText(String.valueOf(lai));
+                if(ngayBD.before(ngayKT)){
+                    List<TKTuyChon> list = new ArrayList<>();
+                    list = thongKeDAO.getTKTheoNgay(sdfLuu.format(ngayBD),sdfLuu.format(ngayKT));
+                    tvTongChi.setText(String.valueOf(list.get(0).getTongChi()));
+                    tvTongThu.setText(String.valueOf(list.get(0).getTongThu()));
+                    Double lai = list.get(0).getTongThu() - list.get(0).getTongChi();
+                    tvLai.setText(String.valueOf(lai));
+                }else {
+                    Toast.makeText(getContext(), "Chọn thời gian không chuẩn", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
