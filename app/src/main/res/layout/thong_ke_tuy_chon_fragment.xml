@@ -4,7 +4,6 @@
     android:layout_height="match_parent"
     android:padding="10dp">
 
-
     <TextView
         android:id="@+id/tv_title_tu_ngay"
         android:layout_width="wrap_content"
@@ -100,7 +99,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="100dp"
         android:layout_toRightOf="@+id/tv_tong_chi"
-        android:text="1.000.000"
+        android:text="0"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -125,7 +124,7 @@
         android:layout_below="@+id/tv_tong_chi"
         android:layout_alignLeft="@+id/tv_value_tong_chi"
         android:layout_marginTop="20dp"
-        android:text="500.000"
+        android:text="0"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />
@@ -150,7 +149,7 @@
         android:layout_below="@+id/tv_value_tong_thu"
         android:layout_alignLeft="@+id/tv_value_tong_chi"
         android:layout_marginTop="20dp"
-        android:text="500.000"
+        android:text="0"
         android:textColor="@color/black"
         android:textSize="25sp"
         android:textStyle="bold" />

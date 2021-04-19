@@ -13,7 +13,7 @@ import com.example.quan_ly_ban_hang.Fragment.XuatFragment;
 
 public class ViewPagerThongKeAdapter extends FragmentStatePagerAdapter {
 
-    private String listTab[]={"TK Biểu đồ ","TK Tùy chọn"};
+    private String listTab[]={"TK Tùy chọn","TK Biểu đồ "};
 
     public ViewPagerThongKeAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
@@ -25,9 +25,9 @@ public class ViewPagerThongKeAdapter extends FragmentStatePagerAdapter {
 //        Log.e("abcdef",String.valueOf(position));
         switch (position){
             case 0:
-                return new ThongKeTheoThangFragment();
-            case 1:
                 return new ThongKeTuyChonFragment();
+            case 1:
+                return new ThongKeTheoThangFragment();
             default:
                 return new ThongKeTheoThangFragment();
         }

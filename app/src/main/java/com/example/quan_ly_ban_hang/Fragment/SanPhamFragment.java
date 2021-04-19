@@ -29,8 +29,10 @@ import com.example.quan_ly_ban_hang.Adapter.AdapterSanPhamRecyclerView;
 import com.example.quan_ly_ban_hang.Adapter.AdapterSpinnerLoaiSP;
 import com.example.quan_ly_ban_hang.Adapter.ExampleAdapter;
 import com.example.quan_ly_ban_hang.Adapter.adapter_spinner_san_pham;
+import com.example.quan_ly_ban_hang.DAO.HoaDonChiTietDAO;
 import com.example.quan_ly_ban_hang.DAO.LoaiSanPhamDAO;
 import com.example.quan_ly_ban_hang.DAO.SanPhamDAO;
+import com.example.quan_ly_ban_hang.Model.HoaDonChiTiet;
 import com.example.quan_ly_ban_hang.Model.LoaiSanPham;
 import com.example.quan_ly_ban_hang.Model.SanPham;
 import com.example.quan_ly_ban_hang.R;
@@ -47,11 +49,13 @@ public class SanPhamFragment extends Fragment {
     SanPhamDAO sanPhamDAO;
     LoaiSanPhamDAO loaiSanPhamDAO;
     LoaiSanPham loaiSanPham;
+    HoaDonChiTietDAO hoaDonChiTietDAO;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.san_pham_fragment,container,false);
+        hoaDonChiTietDAO = new HoaDonChiTietDAO(getContext());
         sanPhamDAO = new SanPhamDAO(getContext());
         loaiSanPhamDAO = new LoaiSanPhamDAO(getContext());
         recySanPham = (RecyclerView) view.findViewById(R.id.recycler_view_san_pham);
@@ -107,12 +111,13 @@ public class SanPhamFragment extends Fragment {
                 ImageView imgSua = (ImageView) layout.findViewById(R.id.img_sua);
 
                 SanPham sanPham = listSanPham.get(possion);
+                int soLuong =  hoaDonChiTietDAO.getSoLuongByMaSP(String.valueOf(sanPham.getMaSanPham()));
 
                 tvTenSanPham.setText(sanPham.getTenSanPham());
                 tvMaSanPham.setText(String.valueOf(sanPham.getMaSanPham()));
                 LoaiSanPham loaiSanPham = loaiSanPhamDAO.getID(String.valueOf(sanPham.getMaLoaiSanPham()));
                 tvLoaiSanPham.setText(loaiSanPham.getTenLoai());
-                tvSoLuong.setText(String.valueOf(sanPham.getSoLuong()));
+                tvSoLuong.setText(String.valueOf(soLuong));
                 tvGiaNhap.setText(String.valueOf(sanPham.getGiaNhap()));
                 tvGiaXuat.setText(String.valueOf(sanPham.getGiaXuat()));
                 tvGhiChu.setText(sanPham.getGhiChu());

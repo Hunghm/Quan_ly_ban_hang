@@ -26,6 +26,7 @@
             android:id="@+id/tv_tenSanPham"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:text="Tên "
             android:textStyle="bold" />
 
@@ -35,16 +36,16 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_tenSanPham"
             android:padding="5dp"
-            android:text="Số lượng: "
+            android:text="Giá xuất: "
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_value_tenSanPham"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:padding="5dp"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/tv_soluong"
-            android:padding="5dp"
             android:text="Trà xanh 0 độ" />
 
         <TextView

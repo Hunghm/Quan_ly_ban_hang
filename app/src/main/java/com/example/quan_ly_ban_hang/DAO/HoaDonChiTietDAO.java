@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.quan_ly_ban_hang.Database.DBHelper;
 import com.example.quan_ly_ban_hang.Model.HoaDon;
 import com.example.quan_ly_ban_hang.Model.HoaDonChiTiet;
+import com.example.quan_ly_ban_hang.Model.SanPham;
 import com.example.quan_ly_ban_hang.Model.Top;
 
 import java.text.ParseException;
@@ -49,7 +50,7 @@ public class HoaDonChiTietDAO {
     }
 
     public int delete(String id) {
-        return db.delete("HoaDonChiTiet", "maHoaDonChiTiet=?", new String[]{id});
+        return db.delete("HoaDonChiTiet", "maHoaDon=?", new String[]{id});
     }
 
     public List<HoaDonChiTiet> getAll()  {
@@ -81,6 +82,17 @@ public class HoaDonChiTietDAO {
             list.add(obj);
         }
         return list;
+    }
+
+    public int getSoLuongByMaSP(String id)  {
+        int soLuong = 0;
+        String sql = "SELECT sum(soLuong) as soLuong FROM HoaDonChiTiet WHERE maSanPham = ? " +
+                "AND loaiHoaDon = 2 GROUP by maSanPham";
+        Cursor c = db.rawQuery(sql, new String[]{id});
+        while (c.moveToNext()) {
+            soLuong = c.getInt(c.getColumnIndex("soLuong"));
+        }
+        return soLuong;
     }
 
     public long insertHDXuat(HoaDonChiTiet obj) {

@@ -52,7 +52,7 @@ public class AdapterSanPhamRecyclerView extends RecyclerView.Adapter<AdapterSanP
     @Override
     public void onBindViewHolder(@NonNull View_holder holder, int position) {
         holder.tvTenSanPham.setText(String.valueOf(list.get(position).getTenSanPham()));
-        holder.tvSoLuong.setText(String.valueOf(list.get(position).getSoLuong()));
+        holder.tvSoLuong.setText(String.valueOf(list.get(position).getGiaXuat()));
         holder.imgIcon.setImageResource(R.drawable.img_sanpham);
     }
 

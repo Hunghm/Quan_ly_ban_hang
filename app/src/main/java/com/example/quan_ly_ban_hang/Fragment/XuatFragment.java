@@ -116,6 +116,7 @@ public class XuatFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         int resultDel = hoaDonDAO.delete(String.valueOf(listHoaDon.get(possion).getMaHoaDon()));
+                        donChiTietDAO.delete(String.valueOf(listHoaDon.get(possion).getMaHoaDon()));
                         if (resultDel>0){
                             reload();
                             adapterXuatRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("2"));

@@ -111,6 +111,7 @@ public class NhapFragment extends Fragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         int resultDel = hoaDonDAO.delete(String.valueOf(listHoaDon.get(possion).getMaHoaDon()));
+                        donChiTietDAO.delete(String.valueOf(listHoaDon.get(possion).getMaHoaDon()));
                         if (resultDel>0){
                             reload();
                             adapterNhapRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("1"));
