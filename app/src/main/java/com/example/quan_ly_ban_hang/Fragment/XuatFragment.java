@@ -169,7 +169,7 @@ public class XuatFragment extends Fragment {
                 btn_them.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        if (valiDate(edSoSanPham)) {
+                        if (valiDate(edSoSanPham,edHanLuuTru)) {
                             HoaDon hoaDon = new HoaDon();
                             hoaDon.setLoaiHoaDon(2);
                             hoaDon.setNgayNhapXuat(Calendar.getInstance().getTime());
