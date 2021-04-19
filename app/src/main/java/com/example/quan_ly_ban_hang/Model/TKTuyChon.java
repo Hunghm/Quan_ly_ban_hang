@@ -1,41 +1,41 @@
 package com.example.quan_ly_ban_hang.Model;
 
 public class TKTuyChon {
-    private int tongChi;
-    private int tongThu;
-    private int lai;
+    private double tongChi;
+    private double tongThu;
+//    private double lai;
 
-    public TKTuyChon(int tongChi, int tongThu, int lai) {
+    public TKTuyChon(double tongChi, double tongThu) {
         this.tongChi = tongChi;
         this.tongThu = tongThu;
-        this.lai = lai;
+//        this.lai = lai;
     }
 
     public TKTuyChon() {
     }
 
-    public int getTongChi() {
+    public double getTongChi() {
         return tongChi;
     }
 
-    public void setTongChi(int tongChi) {
+    public void setTongChi(double tongChi) {
         this.tongChi = tongChi;
     }
 
-    public int getTongThu() {
+    public double getTongThu() {
         return tongThu;
     }
 
-    public void setTongThu(int tongThu) {
+    public void setTongThu(double tongThu) {
         this.tongThu = tongThu;
     }
 
-    public int getLai() {
-        return lai;
-    }
-
-    public void setLai(int lai) {
-        this.lai = lai;
-    }
+//    public double getLai() {
+//        return lai;
+//    }
+//
+//    public void setLai(double lai) {
+//        this.lai = lai;
+//    }
 }
 

@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.quan_ly_ban_hang.Database.DBHelper;
 import com.example.quan_ly_ban_hang.Model.HoaDon;
+import com.example.quan_ly_ban_hang.Model.TKTuyChon;
 import com.example.quan_ly_ban_hang.Model.ThongKe;
 
 import java.text.ParseException;
@@ -44,6 +45,24 @@ public class ThongKeDAO {
         }
         return list;
     }
+
+    public List<TKTuyChon> getTKTheoNgay(String ... selectionArgs) {
+        String sql = "SELECT *, sum(HoaDonChiTiet.soLuong*SanPham.giaXuat) as thanh_tien, sum(HoaDonChiTiet.soLuong*SanPham.giaNhap) as tien_chi FROM " +
+                "(( HoaDonChiTiet INNER JOIN HoaDon on HoaDonChiTiet.maHoaDon = HoaDon.maHoaDon)INNER JOIN SanPham on SanPham.maSanPham = HoaDonChiTiet.maSanPham) " +
+                "WHERE HoaDon.ngayNhapXuat BETWEEN ? AND ? AND HoaDon.loaiHoaDon = 2 ";
+//        String sql = "select * from hoadonchitiet inner join hoadon ";
+        List<TKTuyChon> list = new ArrayList<>();
+        Cursor c = db.rawQuery(sql,selectionArgs);
+        while (c.moveToNext()) {
+            TKTuyChon obj = new TKTuyChon();
+            obj.setTongThu(c.getDouble(c.getColumnIndex("thanh_tien")));
+            obj.setTongChi(c.getDouble(c.getColumnIndex("tien_chi")));
+//            obj.setLai(c.getInt(c.getColumnIndex(obj.g)));
+            list.add(obj);
+        }
+        return list;
+    }
+
 
     public static class Name {
         public static String so_hoa_don = "so_hoa_don";
