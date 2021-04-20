@@ -109,19 +109,30 @@ public class ThongKeTuyChonFragment extends Fragment {
         btnXem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(ngayBD.before(ngayKT)){
+                if(checkNgay(ngayBD,ngayKT)){
                     List<TKTuyChon> list = new ArrayList<>();
                     list = thongKeDAO.getTKTheoNgay(sdfLuu.format(ngayBD),sdfLuu.format(ngayKT));
                     tvTongChi.setText(String.valueOf(list.get(0).getTongChi()));
                     tvTongThu.setText(String.valueOf(list.get(0).getTongThu()));
                     Double lai = list.get(0).getTongThu() - list.get(0).getTongChi();
                     tvLai.setText(String.valueOf(lai));
-                }else {
-                    Toast.makeText(getContext(), "Chọn thời gian không chuẩn", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
         return view;
+    }
+    public boolean checkNgay(Date ngayBD, Date ngayKT){
+        if (!(ngayBD == null) && !(ngayKT == null)){
+            if (ngayBD.before(ngayKT)){
+                return true;
+            }else {
+                Toast.makeText(getContext(), "Chọn thời gian không chuẩn", Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            Toast.makeText(getContext(), "Chưa chọn thời gian", Toast.LENGTH_SHORT).show();
+        }
+
+        return false;
     }
 }

@@ -2,12 +2,15 @@ package com.example.quan_ly_ban_hang.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.preference.PreferenceActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,6 +23,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.quan_ly_ban_hang.Adapter.ExampleAdapter;
+import com.example.quan_ly_ban_hang.DAO.UserDAO;
 import com.example.quan_ly_ban_hang.Fragment.BanChayFragment;
 import com.example.quan_ly_ban_hang.Fragment.Loai_SP_Fragment;
 import com.example.quan_ly_ban_hang.Fragment.NhapFragment;
@@ -27,6 +31,7 @@ import com.example.quan_ly_ban_hang.Fragment.NhapXuatFragment;
 import com.example.quan_ly_ban_hang.Fragment.SanPhamFragment;
 import com.example.quan_ly_ban_hang.Fragment.ThongKeFragment;
 import com.example.quan_ly_ban_hang.Model.ExampleItem;
+import com.example.quan_ly_ban_hang.Model.User;
 import com.example.quan_ly_ban_hang.R;
 import com.example.quan_ly_ban_hang.login.DoiMatKhau;
 import com.example.quan_ly_ban_hang.login.ListUserActivity;
@@ -42,12 +47,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     BottomNavigationView bottomNavigationView;
     DrawerLayout drawer;
     String nguoiDung;
+    UserDAO userDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Log.e("abcde","chay vao day");
+        userDAO = new UserDAO(this);
 
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_naviation);
 
@@ -71,6 +77,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         nguoiDung = intent.getStringExtra("user");
         Toast.makeText(this, nguoiDung, Toast.LENGTH_SHORT).show();
         Log.e("user",nguoiDung);
+        View header = navigationView.getHeaderView(0);
+        TextView tvUser = header.findViewById(R.id.tv_user);
+        User user = userDAO.getID(nguoiDung);
+        String tenUser = user.getHoTen();
+        tvUser.setText("Xin chào "+ tenUser);
+        if (nguoiDung.equalsIgnoreCase("admin")){
+            navigationView.getMenu().findItem(R.id.item_1).setVisible(true);
+        }else {
+            navigationView.getMenu().findItem(R.id.item_1).setVisible(false);
+        }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
