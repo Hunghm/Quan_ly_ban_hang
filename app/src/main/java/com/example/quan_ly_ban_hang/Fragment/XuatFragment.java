@@ -47,11 +47,14 @@ public class XuatFragment extends Fragment {
     HoaDonDAO hoaDonDAO;
     SanPhamDAO sanPhamDAO;
     HoaDonChiTietDAO donChiTietDAO;
-    ArrayList<HoaDonChiTiet> listHoaDonChiTiet;
+//    ArrayList<HoaDonChiTiet> listHoaDonChiTiet;
     ArrayList<HoaDon> listHoaDon;
     private ArrayList<SanPham> listSanPham;
     private SanPham sanPhamSelectedSpinner;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    int soLuongXuat =  0;
+    int soLuongNhap =  0;
+    int soLuongTrongKho = 0;
 
     @Nullable
     @Override
@@ -146,6 +149,7 @@ public class XuatFragment extends Fragment {
                 builder.setView(layout);
                 AlertDialog alertDialog = builder.create();
 
+                TextView tvValueSoLuong = (TextView) layout.findViewById(R.id.tv_value_so_luong);
                 EditText edSoSanPham = (EditText) layout.findViewById(R.id.ed_so_san_pham);
                 EditText edHanLuuTru = (EditText) layout.findViewById(R.id.ed_han_luu_tru);
                 Spinner spinnerSanPham = (Spinner) layout.findViewById(R.id.spinner_san_pham);
@@ -159,6 +163,10 @@ public class XuatFragment extends Fragment {
                     @Override
                     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                         sanPhamSelectedSpinner = (SanPham) parent.getItemAtPosition(position);
+                        soLuongXuat =  donChiTietDAO.getSoLuongXuatByMaSP(String.valueOf(sanPhamSelectedSpinner.getMaSanPham()));
+                        soLuongNhap =  donChiTietDAO.getSoLuongNhapByMaSP(String.valueOf(sanPhamSelectedSpinner.getMaSanPham()));
+                        soLuongTrongKho = soLuongNhap - soLuongXuat;
+                        tvValueSoLuong.setText(String.valueOf(soLuongTrongKho));
                     }
 
                     @Override
@@ -171,29 +179,34 @@ public class XuatFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         if (valiDate(edSoSanPham,edHanLuuTru)) {
-                            HoaDon hoaDon = new HoaDon();
-                            hoaDon.setLoaiHoaDon(2);
-                            hoaDon.setNgayNhapXuat(Calendar.getInstance().getTime());
-                            long resultHoaDon = hoaDonDAO.insert(hoaDon);
-                            HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
+                            int soLuong = soLuongTrongKho - Integer.parseInt(edSoSanPham.getText().toString());
+                            if (soLuong>=0) {
+                                HoaDon hoaDon = new HoaDon();
+                                hoaDon.setLoaiHoaDon(2);
+                                hoaDon.setNgayNhapXuat(Calendar.getInstance().getTime());
+                                long resultHoaDon = hoaDonDAO.insert(hoaDon);
+                                HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
 
-                            Calendar c = Calendar.getInstance();
-                            c.setTime(Calendar.getInstance().getTime());
-                            c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
-                            HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-                            hoaDonChiTiet.setHanLuuTru(c.getTime());
-                            hoaDonChiTiet.setLoaiHoaDon(2);
-                            hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
-                            hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
-                            hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));
+                                Calendar c = Calendar.getInstance();
+                                c.setTime(Calendar.getInstance().getTime());
+                                c.add(Calendar.DAY_OF_MONTH, Integer.parseInt(edHanLuuTru.getText().toString()));
+                                HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+                                hoaDonChiTiet.setHanLuuTru(c.getTime());
+                                hoaDonChiTiet.setLoaiHoaDon(2);
+                                hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
+                                hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
+                                hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));
 
-                            long resultHoaDonChiTiet = donChiTietDAO.insert(hoaDonChiTiet);
-                            if (resultHoaDonChiTiet > 0) {
-                                adapterXuatRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("2"));
-                                reload();
+                                long resultHoaDonChiTiet = donChiTietDAO.insert(hoaDonChiTiet);
+                                if (resultHoaDonChiTiet > 0) {
+                                    adapterXuatRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("2"));
+                                    reload();
+                                }
+                                alertDialog.dismiss();
+                                Toast.makeText(getContext(), String.valueOf(resultHoaDonChiTiet), Toast.LENGTH_SHORT).show();
+                            }else {
+                                Toast.makeText(getContext(), "Trong kho không đủ", Toast.LENGTH_SHORT).show();
                             }
-                            alertDialog.dismiss();
-                            Toast.makeText(getContext(), String.valueOf(resultHoaDonChiTiet), Toast.LENGTH_SHORT).show();
                         }else {
                             Toast.makeText(getContext(), "Điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                         }
@@ -218,6 +231,17 @@ public class XuatFragment extends Fragment {
             if(editTexts[i].getText().toString().isEmpty()){
                 return false;
             };
+        }
+        return true;
+    }
+
+    public boolean valiDateSoLuong(EditText editText, int maSP){
+        int soLuongXuat =  donChiTietDAO.getSoLuongXuatByMaSP(String.valueOf(maSP));
+        int soLuongNhap =  donChiTietDAO.getSoLuongNhapByMaSP(String.valueOf(maSP));
+        int soLuongTrongKho = soLuongNhap - soLuongXuat;
+        int soLuong = soLuongTrongKho - Integer.parseInt(editText.getText().toString());
+        if (soLuong<0){
+            return false;
         }
         return true;
     }
