@@ -141,9 +141,9 @@ public class NhapFragment extends Fragment {
                 builder.setView(layout);
                 AlertDialog alertDialog = builder.create();
 
-                EditText edSoSanPham = (EditText) layout.findViewById(R.id.ed_so_san_pham);
+                EditText edSoSanPham = (EditText) layout.findViewById(R.id.ed_so_san_pham_xuat);
                 EditText edHanLuuTru = (EditText) layout.findViewById(R.id.ed_han_luu_tru);
-                Spinner spinnerSanPham = (Spinner) layout.findViewById(R.id.spinner_san_pham);
+                Spinner spinnerSanPham = (Spinner) layout.findViewById(R.id.spinner_san_pham_xuat);
                 Button btn_them = (Button) layout.findViewById(R.id.btn_add);
 
                 listSanPham = (ArrayList<SanPham>) sanPhamDAO.getAll();

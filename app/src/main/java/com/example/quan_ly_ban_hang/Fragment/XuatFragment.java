@@ -144,7 +144,7 @@ public class XuatFragment extends Fragment {
 //                Toast.makeText(getContext(), "ABCD", Toast.LENGTH_SHORT).show();
 //                startActivity(new Intent(getContext(), NhapActivity.class));
                 LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.activity_nhap,null);
+                View layout = inflater.inflate(R.layout.activity_xuat,null);
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setView(layout);
                 AlertDialog alertDialog = builder.create();

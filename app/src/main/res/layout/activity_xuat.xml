@@ -4,55 +4,84 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="18px"
-    tools:context=".Activity.XuatActivity">
+    android:padding="18dp"
+    tools:context=".Activity.NhapActivity">
 
     <TextView
+        android:id="@+id/tv_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HÓA ĐƠN XUẤT"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:id="@+id/tv_title"
         android:background="#F07B52"
-        android:padding="15px"
+        android:gravity="center"
+        android:text="HÓA ĐƠN NHẬP"
         android:textColor="@color/white"
-        android:textStyle="bold"
-        />
+        android:textSize="30sp"
+        android:padding="15px"
+        android:textStyle="bold" />
 
     <ImageView
         android:id="@+id/img_san_pham"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/tv_title"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
         android:src="@drawable/bill" />
-
     <Spinner
-        android:id="@+id/spinner_san_pham_xuat"
+        android:id="@+id/spinner_san_pham"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/img_san_pham"
         android:layout_marginTop="30dp" />
 
-    <EditText
-        android:id="@+id/ed_so_san_pham_xuat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner_san_pham_xuat"
-        android:layout_marginTop="30dp"
-        android:hint="Số sản phẩm"
-        android:inputType="text" />
-
-    <Button
+    <TextView
+        android:id="@+id/tv_so_luong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_san_pham"
+        android:layout_marginTop="20dp"
+        android:text="Số lượng còn trong kho:"
+        android:textColor="@color/black"
+        />
+
+    <TextView
+        android:id="@+id/tv_value_so_luong"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/spinner_san_pham"
+        android:layout_toRightOf="@+id/tv_so_luong"
+        android:layout_marginTop="20dp"
+        android:text="0"
+        android:layout_marginLeft="10dp"
+        android:textColor="@color/black"
+        />
+
+    <EditText
+        android:id="@+id/ed_so_san_pham"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_so_luong"
+        android:layout_marginTop="20dp"
+        android:hint="Số lượng sản phẩm"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/ed_han_luu_tru"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ed_so_san_pham"
+        android:layout_marginTop="27dp"
+        android:hint="Hạn lưu trữ"
+        android:inputType="number" />
+
+    <Button
         android:id="@+id/btn_add"
-        android:text="Thêm"
-        android:textColor="@color/white"
-        android:layout_below="@+id/ed_so_san_pham_xuat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ed_han_luu_tru"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
-        android:layout_centerHorizontal="true"/>
+        android:textColor="@color/white"
+        android:text="Thêm" />
 
 </RelativeLayout>
