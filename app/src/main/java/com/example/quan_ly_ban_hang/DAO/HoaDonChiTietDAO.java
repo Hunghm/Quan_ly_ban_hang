@@ -84,10 +84,21 @@ public class HoaDonChiTietDAO {
         return list;
     }
 
-    public int getSoLuongByMaSP(String id)  {
+    public int getSoLuongXuatByMaSP(String id)  {
         int soLuong = 0;
         String sql = "SELECT sum(soLuong) as soLuong FROM HoaDonChiTiet WHERE maSanPham = ? " +
                 "AND loaiHoaDon = 2 GROUP by maSanPham";
+        Cursor c = db.rawQuery(sql, new String[]{id});
+        while (c.moveToNext()) {
+            soLuong = c.getInt(c.getColumnIndex("soLuong"));
+        }
+        return soLuong;
+    }
+
+    public int getSoLuongNhapByMaSP(String id)  {
+        int soLuong = 0;
+        String sql = "SELECT sum(soLuong) as soLuong FROM HoaDonChiTiet WHERE maSanPham = ? " +
+                "AND loaiHoaDon = 1 GROUP by maSanPham";
         Cursor c = db.rawQuery(sql, new String[]{id});
         while (c.moveToNext()) {
             soLuong = c.getInt(c.getColumnIndex("soLuong"));

@@ -111,7 +111,9 @@ public class SanPhamFragment extends Fragment {
                 ImageView imgSua = (ImageView) layout.findViewById(R.id.img_sua);
 
                 SanPham sanPham = listSanPham.get(possion);
-                int soLuong =  hoaDonChiTietDAO.getSoLuongByMaSP(String.valueOf(sanPham.getMaSanPham()));
+                int soLuongXuat =  hoaDonChiTietDAO.getSoLuongXuatByMaSP(String.valueOf(sanPham.getMaSanPham()));
+                int soLuongNhap =  hoaDonChiTietDAO.getSoLuongNhapByMaSP(String.valueOf(sanPham.getMaSanPham()));
+                int soLuong = soLuongNhap - soLuongXuat;
 
                 tvTenSanPham.setText(sanPham.getTenSanPham());
                 tvMaSanPham.setText(String.valueOf(sanPham.getMaSanPham()));
