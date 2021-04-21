@@ -43,7 +43,7 @@ public class ThongKeTheoThangFragment extends Fragment {
 
         ArrayList<BarEntry> visitors = new ArrayList<>();
         for (ThongKe thongke : listThongKe) {
-            visitors.add(new BarEntry( 4, thongke.getTongTien().floatValue()));
+            visitors.add(new BarEntry( thongke.getMonth(), thongke.getTongTien().floatValue()));
         }
         Toast.makeText(getContext(), String.valueOf(listThongKe.size()), Toast.LENGTH_SHORT).show();
 
