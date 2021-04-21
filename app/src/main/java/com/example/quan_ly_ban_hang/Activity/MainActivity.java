@@ -84,8 +84,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tvUser.setText("Xin chào "+ tenUser);
         if (nguoiDung.equalsIgnoreCase("admin")){
             navigationView.getMenu().findItem(R.id.item_1).setVisible(true);
+            navigationView.getMenu().findItem(R.id.item_2).setVisible(true);
         }else {
             navigationView.getMenu().findItem(R.id.item_1).setVisible(false);
+            navigationView.getMenu().findItem(R.id.item_2).setVisible(false);
         }
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
