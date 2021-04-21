@@ -221,7 +221,7 @@ public class XuatFragment extends Fragment {
                                     hoaDon.setNgayNhapXuat(ngayChon);
                                 }
                                 long resultHoaDon = hoaDonDAO.insert(hoaDon);
-                                HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
+//                                HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
 
                                 Calendar c = Calendar.getInstance();
                                 c.setTime(Calendar.getInstance().getTime());
@@ -230,7 +230,7 @@ public class XuatFragment extends Fragment {
                                 hoaDonChiTiet.setHanLuuTru(c.getTime());
                                 hoaDonChiTiet.setLoaiHoaDon(2);
                                 hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
-                                hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
+                                hoaDonChiTiet.setMaHoaDon((int) resultHoaDon);
                                 hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));
 
                                 long resultHoaDonChiTiet = donChiTietDAO.insert(hoaDonChiTiet);

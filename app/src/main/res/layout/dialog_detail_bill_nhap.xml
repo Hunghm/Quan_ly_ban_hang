@@ -46,7 +46,8 @@
         android:id="@+id/tv_value_san_pham"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_value_mahd"
+        android:layout_toRightOf="@+id/tv_han_luu_tru"
+        android:layout_marginLeft="20dp"
         android:layout_alignTop="@+id/tv_san_pham"
         android:text="SP01" />
 
@@ -61,9 +62,9 @@
         android:id="@+id/tv_value_ngay_nhap"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_value_mahd"
+        android:layout_alignLeft="@+id/tv_value_san_pham"
         android:layout_alignTop="@+id/tv_ngay_nhap"
-        android:text="12/01/2021" />
+        android:text="12/01/2021 13:17:02" />
 
     <TextView
         android:id="@+id/tv_so_san_pham"
@@ -76,7 +77,7 @@
         android:id="@+id/tv_value_so_san_pham"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_value_mahd"
+        android:layout_alignLeft="@+id/tv_value_san_pham"
         android:layout_alignTop="@+id/tv_so_san_pham"
         android:text="50 thùng" />
 
@@ -92,7 +93,7 @@
         android:id="@+id/tv_value_thanh_tien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_value_mahd"
+        android:layout_alignLeft="@+id/tv_value_san_pham"
         android:layout_alignTop="@+id/tv_thanh_tien"
         android:text="1.000.0000" />
 
@@ -118,7 +119,7 @@
         android:id="@+id/tv_value_han_luu_tru"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tv_value_mahd"
+        android:layout_alignLeft="@+id/tv_value_san_pham"
         android:layout_alignTop="@+id/tv_han_luu_tru"
         android:text="22/02/2022"
         />

@@ -91,6 +91,9 @@ public class NhapFragment extends Fragment {
                 HoaDon hoaDon =listHoaDon.get(possion);
                 HoaDonChiTiet hoaDonChiTiet = donChiTietDAO.getByIDHoaDon(String.valueOf(hoaDon.getMaHoaDon()));
                 SanPham sanPham = sanPhamDAO.getID(String.valueOf(hoaDonChiTiet.getMaSanPham()));
+                if (hoaDonChiTiet==null){
+                    Toast.makeText(getContext(), "Hdct null", Toast.LENGTH_SHORT).show();
+                }
                 tvMaHD.setText(String.valueOf(hoaDon.getMaHoaDon()));
                 tvTenSanPham.setText(sanPham.getTenSanPham());
                 tvNgayNhap.setText(sdf.format(hoaDon.getNgayNhapXuat()));
@@ -206,7 +209,8 @@ public class NhapFragment extends Fragment {
                                 hoaDon.setNgayNhapXuat(ngayChon);
                             }
                             long resultHoaDon = hoaDonDAO.insert(hoaDon);
-                            HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
+//                            Log.e("idNewHoaDon",String.valueOf(resultHoaDon));
+//                            HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
 
                             Calendar c = Calendar.getInstance();
                             c.setTime(Calendar.getInstance().getTime());
@@ -215,7 +219,7 @@ public class NhapFragment extends Fragment {
                             hoaDonChiTiet.setHanLuuTru(c.getTime());
                             hoaDonChiTiet.setLoaiHoaDon(1);
                             hoaDonChiTiet.setMaSanPham(sanPhamSelectedSpinner.getMaSanPham());
-                            hoaDonChiTiet.setMaHoaDon(hoaDon1.getMaHoaDon());
+                            hoaDonChiTiet.setMaHoaDon((int) resultHoaDon);
                             hoaDonChiTiet.setSoLuong(Integer.parseInt(edSoSanPham.getText().toString()));
 
                             long resultHoaDonChiTiet = donChiTietDAO.insert(hoaDonChiTiet);

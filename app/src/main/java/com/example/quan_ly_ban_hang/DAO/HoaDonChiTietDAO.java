@@ -118,6 +118,9 @@ public class HoaDonChiTietDAO {
     public HoaDonChiTiet getByIDHoaDon(String idHoaDon) {
         String sql = "SELECT * FROM HoaDonChiTiet WHERE maHoaDon=?";
         List<HoaDonChiTiet> list = getData(sql, idHoaDon);
+        if(list.size()==0){
+            return null;
+        }
         return list.get(0);
     }
 
