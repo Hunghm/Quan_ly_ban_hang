@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="18dp">
 
@@ -27,14 +27,15 @@
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="25dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:orientation="vertical">
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <EditText
                 android:id="@+id/ed_user"
                 android:layout_width="match_parent"
@@ -100,21 +101,24 @@
         android:orientation="horizontal">
 
         <Button
-            android:textColor="#fff"
             android:id="@+id/btn_luu"
-            android:fontFamily="casual"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Luu" />
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:fontFamily="casual"
+            android:text="Luu"
+            android:textColor="#fff" />
 
         <Button
-            android:textColor="#fff"
-            android:layout_marginLeft="60dp"
             android:id="@+id/btn_huy"
-            android:fontFamily="casual"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Nhập mới" />
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="casual"
+            android:text="Nhập mới"
+            android:textColor="#fff" />
     </LinearLayout>
 
 </LinearLayout>

@@ -71,8 +71,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:hint="Nhập lại mật khẩu"
             android:fontFamily="casual"
+            android:hint="Nhập lại mật khẩu"
             android:inputType="textPassword"
             android:textSize="18dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -85,21 +85,23 @@
 
         <Button
             android:id="@+id/btn_luu"
-            android:layout_width="150dp"
-            android:fontFamily="casual"
-            android:textColor="#fff"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="5dp"
-            android:text="Lưu" />
+            android:layout_weight="1"
+            android:layout_marginRight="20dp"
+            android:fontFamily="casual"
+            android:text="Lưu"
+            android:textColor="#fff" />
 
         <Button
             android:id="@+id/btn_huy"
-            android:textColor="#fff"
-            android:fontFamily="casual"
-            android:layout_width="150dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="60dp"
-            android:text="Nhập mới" />
+            android:layout_weight="1"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="casual"
+            android:text="Nhập mới"
+            android:textColor="#fff" />
     </LinearLayout>
 
 </LinearLayout>
