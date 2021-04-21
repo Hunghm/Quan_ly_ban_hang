@@ -1,6 +1,7 @@
 package com.example.quan_ly_ban_hang.Fragment;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.icu.util.Calendar;
@@ -11,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +39,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class NhapFragment extends Fragment {
 
@@ -49,7 +53,9 @@ public class NhapFragment extends Fragment {
     ArrayList<HoaDon> listHoaDon;
     private ArrayList<SanPham> listSanPham;
     private SanPham sanPhamSelectedSpinner;
+    Date ngayChon;
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    SimpleDateFormat sdfHienThi = new SimpleDateFormat("dd-MM-yyyy");
 
     @Nullable
     @Override
@@ -141,6 +147,8 @@ public class NhapFragment extends Fragment {
                 builder.setView(layout);
                 AlertDialog alertDialog = builder.create();
 
+                ImageView imgNgayChon = (ImageView) layout.findViewById(R.id.img_ngay_chon);
+                TextView tvNgayChon = (TextView) layout.findViewById(R.id.tv_ngay_chon);
                 EditText edSoSanPham = (EditText) layout.findViewById(R.id.ed_so_san_pham_xuat);
                 EditText edHanLuuTru = (EditText) layout.findViewById(R.id.ed_han_luu_tru);
                 Spinner spinnerSanPham = (Spinner) layout.findViewById(R.id.spinner_san_pham_xuat);
@@ -161,6 +169,30 @@ public class NhapFragment extends Fragment {
 
                     }
                 });
+                Calendar calendar = Calendar.getInstance();
+                imgNgayChon.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int year = calendar.get(calendar.YEAR);
+                        int month = calendar.get(calendar.MONTH);
+                        int day = calendar.get(calendar.DAY_OF_MONTH);
+                        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                calendar.set(java.util.Calendar.YEAR, year);
+                                calendar.set(java.util.Calendar.MONTH, monthOfYear);
+                                calendar.set(java.util.Calendar.DAY_OF_MONTH, dayOfMonth);
+                                ngayChon = calendar.getTime();
+                                tvNgayChon.setText(sdfHienThi.format(ngayChon));
+                            }
+                        };
+// Create DatePickerDialog (Spinner Mode):
+                        DatePickerDialog datePickerDialog = new DatePickerDialog(getContext(), dateSetListener, year, month, day);
+// Show
+                        datePickerDialog.show();
+                    }
+                });
 
                 btn_them.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -168,7 +200,11 @@ public class NhapFragment extends Fragment {
                         if (valiDate(edSoSanPham,edHanLuuTru)) {
                             HoaDon hoaDon = new HoaDon();
                             hoaDon.setLoaiHoaDon(1);
-                            hoaDon.setNgayNhapXuat(Calendar.getInstance().getTime());
+                            if (ngayChon==null) {
+                                hoaDon.setNgayNhapXuat(Calendar.getInstance().getTime());
+                            }else {
+                                hoaDon.setNgayNhapXuat(ngayChon);
+                            }
                             long resultHoaDon = hoaDonDAO.insert(hoaDon);
                             HoaDon hoaDon1 = hoaDonDAO.getHoaDonNew();
 

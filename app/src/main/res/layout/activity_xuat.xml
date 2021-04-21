@@ -56,11 +56,39 @@
         android:textColor="@color/black"
         />
 
+    <LinearLayout
+        android:id="@+id/linear_chon_ngay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_so_luong"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tv_ngay_chon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Số sản phẩm"
+            android:inputType="text" />
+
+        <ImageView
+            android:id="@+id/img_ngay_chon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_calendar"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="5dp"
+            />
+
+    </LinearLayout>
+
     <EditText
         android:id="@+id/ed_so_san_pham"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_so_luong"
+        android:layout_below="@+id/linear_chon_ngay"
         android:layout_marginTop="20dp"
         android:hint="Số lượng sản phẩm"
         android:inputType="number" />
@@ -80,7 +108,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ed_han_luu_tru"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="30dp"
         android:textColor="@color/white"
         android:text="Thêm" />
 
