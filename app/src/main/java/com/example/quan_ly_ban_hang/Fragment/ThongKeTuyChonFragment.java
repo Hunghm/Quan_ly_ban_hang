@@ -26,6 +26,7 @@ import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -41,6 +42,7 @@ public class ThongKeTuyChonFragment extends Fragment {
     SimpleDateFormat sdfHienThi = new SimpleDateFormat("dd-MM-yyyy");
     SimpleDateFormat sdfLuu = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     ThongKeDAO thongKeDAO;
+    DecimalFormat formater = new DecimalFormat("###,###,###,###,###");
 
     @Nullable
     @Override
@@ -112,10 +114,10 @@ public class ThongKeTuyChonFragment extends Fragment {
                 if(checkNgay(ngayBD,ngayKT)){
                     List<TKTuyChon> list = new ArrayList<>();
                     list = thongKeDAO.getTKTheoNgay(sdfLuu.format(ngayBD),sdfLuu.format(ngayKT));
-                    tvTongChi.setText(String.valueOf(list.get(0).getTongChi()));
-                    tvTongThu.setText(String.valueOf(list.get(0).getTongThu()));
+                    tvTongChi.setText(formater.format(list.get(0).getTongChi()));
+                    tvTongThu.setText(formater.format(list.get(0).getTongThu()));
                     Double lai = list.get(0).getTongThu() - list.get(0).getTongChi();
-                    tvLai.setText(String.valueOf(lai));
+                    tvLai.setText(formater.format(lai));
                 }
             }
         });
