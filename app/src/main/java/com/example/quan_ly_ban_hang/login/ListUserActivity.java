@@ -21,7 +21,7 @@ public class ListUserActivity extends AppCompatActivity {
 
     RecyclerView recySPUser;
     AdapterUserRecycler adapterUserRecycler;
-    ArrayList<User> listTop;
+    ArrayList<User> listUser;
     UserDAO userDAO;
 
     @Override
@@ -32,20 +32,31 @@ public class ListUserActivity extends AppCompatActivity {
         recySPUser = (RecyclerView) findViewById(R.id.recycler_view_user);
 
         userDAO = new UserDAO(this);
-        listTop = (ArrayList<User>) userDAO.getAll();
+        listUser = (ArrayList<User>) userDAO.getAll();
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recySPUser.setLayoutManager(llm);
-        adapterUserRecycler = new AdapterUserRecycler(this,listTop);
+        adapterUserRecycler = new AdapterUserRecycler(this,listUser);
         recySPUser.setAdapter(adapterUserRecycler);
-        Toast.makeText(this, String.valueOf(listTop.size()), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, String.valueOf(listUser.size()), Toast.LENGTH_SHORT).show();
 
         adapterUserRecycler.onClickDeleteListener(new AdapterUserRecycler.onClickListener() {
             @Override
             public void onClick(int possion) {
+                User user = listUser.get(possion);
+                int result = userDAO.delete(user.getUser());
+                if (result>0){
+                    Toast.makeText(ListUserActivity.this, ""+result, Toast.LENGTH_SHORT).show();
+                    adapterUserRecycler.refresh((ArrayList) userDAO.getAll());
+                    reload();
+                }
 
             }
         });
 
+    }
+    public void reload(){
+        listUser.clear();
+        listUser.addAll( userDAO.getAll());
     }
 }
