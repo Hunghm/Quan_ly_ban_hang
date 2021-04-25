@@ -14,7 +14,7 @@
         android:background="#F07B52"
         android:gravity="center"
         android:padding="15px"
-        android:text="HÓA ĐƠN XUẤT"
+        android:text="HÓA ĐƠN NHẬP"
         android:textColor="@color/white"
         android:textSize="30sp"
         android:textStyle="bold" />
