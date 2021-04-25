@@ -225,10 +225,10 @@ public class NhapFragment extends Fragment {
                             long resultHoaDonChiTiet = donChiTietDAO.insert(hoaDonChiTiet);
                             if (resultHoaDonChiTiet > 0) {
                                 adapterNhapRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("1"));
+                                Toast.makeText(getContext(), "Thêm hóa đơn nhập thành công", Toast.LENGTH_SHORT).show();
                                 reload();
                             }
                             alertDialog.dismiss();
-                            Toast.makeText(getContext(), String.valueOf(resultHoaDonChiTiet), Toast.LENGTH_SHORT).show();
                         }else {
                             Toast.makeText(getContext(), "Điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                         }

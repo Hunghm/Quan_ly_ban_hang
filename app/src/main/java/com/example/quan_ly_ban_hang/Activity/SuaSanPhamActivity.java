@@ -75,7 +75,7 @@ public class SuaSanPhamActivity extends AppCompatActivity {
                 sanPham.setMaLoaiSanPham(loaiSanPham.getMaLoai());
                 int result  = sanPhamDAO.update(sanPham);
                 if (result > 0){
-                    Toast.makeText(SuaSanPhamActivity.this, "Sua thanh cong", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SuaSanPhamActivity.this, "Sửa thành công", Toast.LENGTH_SHORT).show();
                 }
             }
         });

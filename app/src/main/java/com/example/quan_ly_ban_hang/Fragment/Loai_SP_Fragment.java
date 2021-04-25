@@ -91,10 +91,13 @@ public class Loai_SP_Fragment extends Fragment {
                             LoaiSanPham loaiSanPham = new LoaiSanPham();
                             loaiSanPham.setTenLoai(edTenSanPham.getText().toString());
                             long result = loaiSanPhamDAO.insert(loaiSanPham);
-                            Toast.makeText(getContext(), String.valueOf(result), Toast.LENGTH_SHORT).show();
-                            reloadList();
+                            if (result > 0) {
+                                adapter.refresh((ArrayList) loaiSanPhamDAO.getAll());
+                                Toast.makeText(getContext(), "Thêm loại sản phẩm thành công", Toast.LENGTH_SHORT).show();
+                                reloadList();
+                            }
                             alertDialog.dismiss();
-                            adapter.refresh((ArrayList) loaiSanPhamDAO.getAll());
+
                         }else {
                             Toast.makeText(getContext(), "Điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                         }

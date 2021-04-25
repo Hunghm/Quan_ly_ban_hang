@@ -236,10 +236,10 @@ public class XuatFragment extends Fragment {
                                 long resultHoaDonChiTiet = donChiTietDAO.insert(hoaDonChiTiet);
                                 if (resultHoaDonChiTiet > 0) {
                                     adapterXuatRecyclerView.refresh((ArrayList) hoaDonDAO.layTheoLoai("2"));
+                                    Toast.makeText(getContext(), "Thêm hóa đơn xuất thành công", Toast.LENGTH_SHORT).show();
                                     reload();
                                 }
                                 alertDialog.dismiss();
-                                Toast.makeText(getContext(), String.valueOf(resultHoaDonChiTiet), Toast.LENGTH_SHORT).show();
                             }else {
                                 Toast.makeText(getContext(), "Trong kho không đủ", Toast.LENGTH_SHORT).show();
                             }

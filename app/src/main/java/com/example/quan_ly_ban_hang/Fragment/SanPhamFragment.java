@@ -184,10 +184,12 @@ public class SanPhamFragment extends Fragment {
                             sanPham.setAnh(R.drawable.img_sanpham);
                             sanPham.setMaLoaiSanPham(loaiSanPham.getMaLoai());
                             long result = sanPhamDAO.insert(sanPham);
-                            reloadList();
-                            adapterSanPhamRecy.refresh((ArrayList) sanPhamDAO.getAll());
+                            if (result > 0) {
+                                adapterSanPhamRecy.refresh((ArrayList) sanPhamDAO.getAll());
+                                Toast.makeText(getContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                                reloadList();
+                            }
                             alertDialog.dismiss();
-                            Toast.makeText(getContext(), String.valueOf(result), Toast.LENGTH_SHORT).show();
                         }else {
                             Toast.makeText(getContext(), "Điền đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                         }
